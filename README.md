@@ -47,7 +47,7 @@ model.py
 
 ## 张家华
 train.py
-test.py
+test.py  优化了测试过程，如果图片小，使用GPU，如果图片较大，使用CPU
 
 ## 赵锦浩
 data_process.py
