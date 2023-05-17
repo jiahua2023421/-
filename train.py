@@ -39,6 +39,7 @@ if __name__ == '__main__':
     optimizer = optim.Adam(model.parameters(), lr=args.lr)
     scheduler = MultiStepLR(optimizer, milestones=[30, 60, 90], gamma=0.2)  # learning rates
     # 训练
+    # epoch = 1
     for epoch in range(initial_epoch, n_epoch):
         scheduler.step(epoch)  # step to the learning rate in this epcoh
         xs = dp.datagenerator(data_dir=args.train_data)
@@ -46,6 +47,13 @@ if __name__ == '__main__':
         xs = torch.from_numpy(xs.transpose((0, 3, 1, 2)))  # tensor of the clean patches, NXCXHXW
         DDataset = DenoisingDataset(xs, sigma)
         DLoader = DataLoader(dataset=DDataset, num_workers=1, drop_last=True, batch_size=batch_size, shuffle=True)
+        # DLoader = DataLoader(dataset=DDataset, num_workers=1, drop_last=True, batch_size=batch_size, shuffle=False)
+        # dataset (Dataset) – 决定数据从哪读取或者从何读取；
+        # num_workers (python:int, optional) – 是否多进程读取数据（默认为０);
+        # drop_last (bool, optional) – 当样本数不能被batchsize整除时，最后一批数据是否舍弃（default: False)
+        # batchszie：批大小，决定一个epoch有多少个Iteration；
+        # shuffle (bool, optional) –每一个 epoch是否为乱序 (default: False)；
+
         epoch_loss = 0
         start_time = time.time()
 
@@ -58,6 +66,9 @@ if __name__ == '__main__':
             epoch_loss += loss.item()
             loss.backward()
             optimizer.step()
+
+            ceshi1 = xs.size(0)
+            ceshi = xs.size(0) // batch_size
             if n_count % 10 == 0:
                 print('%4d %4d / %4d loss = %2.4f' % (
                 epoch + 1, n_count, xs.size(0) // batch_size, loss.item() / batch_size))
@@ -65,5 +76,6 @@ if __name__ == '__main__':
 
         log('epcoh = %4d , loss = %4.4f , time = %4.2f s' % (epoch + 1, epoch_loss / n_count, elapsed_time))
         np.savetxt('train_result.txt', np.hstack((epoch + 1, epoch_loss / n_count, elapsed_time)), fmt='%2.4f')
-        # torch.save(model.state_dict(), os.path.join(save_dir, 'model_%03d.pth' % (epoch+1)))
-        torch.save(model, os.path.join(save_dir, 'model_%03d.pth' % (epoch + 1)))
+        torch.save(model, os.path.join(save_dir, 'model_%03d.pth' % (epoch+1)))
+    # torch.save(model, os.path.join(save_dir, 'model_001.pth'))
+    # torch.save(model, os.path.join(save_dir, 'model_%03d.pth' % (epoch + 1)))
