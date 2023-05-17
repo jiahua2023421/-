@@ -23,7 +23,7 @@ def parse_args(flag):
         # 训练
         train_parser = argparse.ArgumentParser(description='PyTorch DnCNN')
         train_parser.add_argument('--model', default='DnCNN', type=str, help='choose a type of model')
-        train_parser.add_argument('--batch_size', default=64, type=int, help='batch size')
+        train_parser.add_argument('--batch_size', default=128, type=int, help='batch size')
         train_parser.add_argument('--train_data', default='data/Train400', type=str, help='path of train data')
         train_parser.add_argument('--sigma', default=25, type=int, help='noise level')
         train_parser.add_argument('--epoch', default=180, type=int, help='number of train epoches')

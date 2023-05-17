@@ -5,7 +5,8 @@ import numpy as np
 from imageio import imread
 from skimage.metrics import structural_similarity as compare_ssim
 from skimage.metrics import peak_signal_noise_ratio as compare_psnr
-# 私人库
+ # 私人库
+
 from public import parse_args, log
 from data_process import show, save_result
 from model import DnCNN
@@ -64,7 +65,7 @@ if __name__ == '__main__':
                 y = y.astype(np.float32)
                 y_ = torch.from_numpy(y).view(1, -1, y.shape[0], y.shape[1])
 
-                torch.cuda.synchronize()
+                # torch.cuda.synchronize()
                 start_time = time.time()
                 # ceshi = y_.nelement
                 # ceshi2 = y_.squeeze(2)
@@ -77,12 +78,15 @@ if __name__ == '__main__':
                 x_ = x_.view(y.shape[0], y.shape[1])
                 x_ = x_.cpu()
                 x_ = x_.detach().numpy().astype(np.float32)
-                torch.cuda.synchronize()
-                elapsed_time = time.time() - start_time
-                print('%10s : %10s : %2.4f second' % (set_cur, im, elapsed_time))
+                # torch.cuda.synchronize()
+                # elapsed_time = time.time() - start_time
+                # print('%10s : %10s : %2.4f second' % (set_cur, im, elapsed_time))
 
                 psnr_x_ = compare_psnr(x, x_)
                 ssim_x_ = compare_ssim(x, x_)
+
+                ssim_x_ = compare_ssim(x, x_)
+
                 # if args.save_result:
                 name, ext = os.path.splitext(im)
                 # show(np.hstack((y, x_)))  # show the image
@@ -94,6 +98,6 @@ if __name__ == '__main__':
         ssim_avg = np.mean(ssims)
         psnrs.append(psnr_avg)
         ssims.append(ssim_avg)
-        # if args.save_result:
-        save_result(np.hstack((psnrs, ssims)), path=os.path.join(args.result_dir, set_cur, 'results.txt'))
+        if args.save_result:
+         save_result(np.hstack((psnrs, ssims)), path=os.path.join(args.result_dir, set_cur, 'results.txt'))
         log('Datset: {0:10s} \n  PSNR = {1:2.2f}dB, SSIM = {2:1.4f}'.format(set_cur, psnr_avg, ssim_avg))
