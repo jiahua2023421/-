@@ -8,7 +8,7 @@ from torch.nn.modules.loss import _Loss
 def parse_args(flag):
     if flag == 1:
         # 测试
-        # 容器参数规范，并具有将解析器作为一个整体应用的选项
+        # 容器参数规范，并具有将解析器作为一个整体应用选项
         test_parser = argparse.ArgumentParser()#创建测试解析器
         test_parser.add_argument('--set_dir', default='data/Test', type=str, help='directory of test dataset')  #测试数据目录data/Test
         test_parser.add_argument('--set_names', default=['Set68', 'Set12'], help='directory of test dataset')  #测试数据目录'Set68'，'Set12'
@@ -33,7 +33,7 @@ def parse_args(flag):
 
 # 测试点
 def findLastCheckpoint(save_dir):
-    # 返回所有匹配的文件路径列表。定义了文件路径匹配规则，这里可以是绝对路径，也可以是相对路径。
+    #返回所有匹配的文件路径列表。定义了文件路径匹配规则，这里可以是绝对路径，也可以是相对路径。
     file_list = glob.glob(os.path.join(save_dir, 'model_*.pth'))
     if file_list:
         epochs_exist = []
@@ -47,9 +47,9 @@ def findLastCheckpoint(save_dir):
     return initial_epoch
 
 # 日志
-#strftime()方法使用日期，时间或日期时间对象返回表示日期和时间的字符串
+
 def log(*args, **kwargs):
-    print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S:"), *args, **kwargs)
+    print(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S:"), *args, **kwargs)#strftime()方法使用日期，时间或日期时间对象返回表示日期及时间的字符串
 
 # 损失函数类
 class sum_squared_error(_Loss):  # PyTorch 0.4.1
@@ -57,13 +57,13 @@ class sum_squared_error(_Loss):  # PyTorch 0.4.1
     Definition: sum_squared_error = 1/2 * nn.MSELoss(reduction = 'sum')
     The backward is defined as: input-target
     误差平方和= 1/2 * nn.mseloss(reduction = ' sum ')
-    反向定义为:输入-目标
+    反向定义为:输入--目标
     """
     def __init__(self, size_average=None, reduce=None, reduction='sum'):
         super(sum_squared_error, self).__init__(size_average, reduce, reduction)
 
-    # mse_loss计算input和target之差的平方
+    # mse_loss计算input与target之差的平方
     # reduce(bool)- 返回值是否为标量，默认为True size_average(bool)- 当reduce=True时有效。为True时，返回的loss为平均值；为False时，返回的各样本的loss之和。
     def forward(self, input, target):
-        # 返回torch.sum(torch.pow(input-target,2), (0,1,2,3)).div_(2)
+        # 返回torch.sum(torch.pow(input-target,2),(0,1,2,3)).div_(2)
         return torch.nn.functional.mse_loss(input, target, size_average=None, reduce=None, reduction='sum').div_(2)
