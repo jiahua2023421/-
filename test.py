@@ -1,5 +1,8 @@
 # 官方库
-import torch, os, time
+import os
+import time
+import torch
+
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 import numpy as np
 from imageio import imread
@@ -8,10 +11,8 @@ from skimage.metrics import peak_signal_noise_ratio as compare_psnr
  # 私人库
 
 from public import parse_args, log
-from data_process import show, save_result
+from data_process import save_result
 from model import DnCNN
-
-
 
 if __name__ == '__main__':
     # 参数
@@ -99,12 +100,13 @@ if __name__ == '__main__':
                 save_result(x_, path=os.path.join(args.result_dir, set_cur,
                                                   name + '_dncnn' + ext))
                 # save the denoised image  矩阵 ， 路径
-                psnrs.append(psnr_x_)
+                psnrs.append(psnr_x_)  # 向列表末尾添加元素
                 ssims.append(ssim_x_)
-        psnr_avg = np.mean(psnrs)
+        psnr_avg = np.mean(psnrs)  # np.mean求平均值
         ssim_avg = np.mean(ssims)
         psnrs.append(psnr_avg)
         ssims.append(ssim_avg)
-        if args.save_result:
-         save_result(np.hstack((psnrs, ssims)), path=os.path.join(args.result_dir, set_cur, 'results.txt'))
+        # if args.save_result:
+        save_result(np.hstack((psnrs, ssims)), path=os.path.join(args.result_dir, set_cur, 'results.txt'))
+        # 以文本形式 保存每一张图片的PSNR与SSIM结果
         log('Datset: {0:10s} \n  PSNR = {1:2.2f}dB, SSIM = {2:1.4f}'.format(set_cur, psnr_avg, ssim_avg))
