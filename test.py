@@ -42,8 +42,8 @@ if __name__ == '__main__':
     model_cpu.eval()  # evaluation mode  设置为预测模式
     #    model.train()
 
-    if torch.cuda.is_available():  # GPU
-        model = model.cuda()  # 加载到GPU
+    # if torch.cuda.is_available():  # GPU
+    #     model = model.cuda()  # 加载到GPU
 
     if not os.path.exists(args.result_dir):  # 结果路径
         os.mkdir(args.result_dir)  # 创造目录
@@ -71,17 +71,17 @@ if __name__ == '__main__':
                 # ceshi = y_.nelement
                 # ceshi2 = y_.squeeze(2)
                 ceshi = y.size
-                if y.size < 154402:
-                    y_ = y_.cuda()
-                    x_ = model(y_)  # inference
-                else:
-                    x_ = model_cpu(y_)
+                # if y.size < 154402:
+                #     y_ = y_.cuda()
+                #     x_ = model(y_)  # inference
+                # else:
+                x_ = model_cpu(y_)
                 x_ = x_.view(y.shape[0], y.shape[1])
                 x_ = x_.cpu()
                 x_ = x_.detach().numpy().astype(np.float32)
                 # torch.cuda.synchronize()
-                # elapsed_time = time.time() - start_time
-                # print('%10s : %10s : %2.4f second' % (set_cur, im, elapsed_time))
+                elapsed_time = time.time() - start_time
+                print('%10s : %10s : %2.4f second' % (set_cur, im, elapsed_time))
 
                 psnr_x_ = compare_psnr(x, x_)
                 ssim_x_ = compare_ssim(x, x_)
@@ -90,7 +90,7 @@ if __name__ == '__main__':
 
                 # if args.save_result:
                 name, ext = os.path.splitext(im)
-                # show(np.hstack((y, x_)))  # show the image
+                show(np.hstack((y, x_)))  # show the image
                 save_result(x_, path=os.path.join(args.result_dir, set_cur,
                                                   name + '_dncnn' + ext))  # save the denoised image
                 psnrs.append(psnr_x_)
