@@ -68,34 +68,37 @@ if __name__ == '__main__':
                 # Add Gaussian noise without clipping
                 y = y.astype(np.float32)  # 转换数据类型 float32位
                 y_ = torch.from_numpy(y).view(1, -1, y.shape[0], y.shape[1])
-
-                torch.cuda.synchronize()
-                start_time = time.time()
+                # 创建张量，维度 1 1 481 321
+                # view重构维度
+                torch.cuda.synchronize()  # 等待当前设备上所有流中的所有核心完成
+                start_time = time.time()  # 计算代码运行时间
                 # ceshi = y_.nelement
                 # ceshi2 = y_.squeeze(2)
-                ceshi = y.size
-                if y.size < 154402:
+                # ceshi = y.size
+                if y.size < 154402:  # 图片较小，用GPU测试
                     y_ = y_.cuda()
-                    x_ = model(y_)  # inference
-                else:
+                    x_ = model(y_)  # 使用模型对y_进行处理，输出x_
+                    # inference
+                else:   # 图片较大，用GPU测试
                     x_ = model_cpu(y_)
-                x_ = x_.view(y.shape[0], y.shape[1])
-                x_ = x_.cpu()
-                x_ = x_.detach().numpy().astype(np.float32)
+                x_ = x_.view(y.shape[0], y.shape[1])  # 把x_维度处理为二维
+                x_ = x_.cpu()  # 将变量放在CPU上
+                x_ = x_.detach().numpy().astype(np.float32)  # 整理为float32 数组 阻断反向传播
                 torch.cuda.synchronize()
                 elapsed_time = time.time() - start_time
                 print('%10s : %10s : %2.4f second' % (set_cur, im, elapsed_time))
 
-                psnr_x_ = compare_psnr(x, x_)
+                psnr_x_ = compare_psnr(x, x_)  # 比较 原图 与 加噪声再去噪的图 计算psnr
                 ssim_x_ = compare_ssim(x, x_)
 
-                ssim_x_ = compare_ssim(x, x_)
+                # ssim_x_ = compare_ssim(x, x_)
 
                 # if args.save_result:
-                name, ext = os.path.splitext(im)
+                name, ext = os.path.splitext(im)  # 文件名 后缀
                 # show(np.hstack((y, x_)))  # show the image
                 save_result(x_, path=os.path.join(args.result_dir, set_cur,
-                                                  name + '_dncnn' + ext))  # save the denoised image
+                                                  name + '_dncnn' + ext))
+                # save the denoised image  矩阵 ， 路径
                 psnrs.append(psnr_x_)
                 ssims.append(ssim_x_)
         psnr_avg = np.mean(psnrs)
