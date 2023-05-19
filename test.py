@@ -15,20 +15,20 @@ from model import DnCNN
 
 if __name__ == '__main__':
     # 参数
-    args = parse_args(1)
+    args = parse_args(1)  #测试集
 
     # model = DnCNN()
     if not os.path.exists(os.path.join(args.model_dir, args.model_name)):  # model_001若不存在，则加载model
 
-        model_cpu = torch.load(os.path.join(args.model_dir, 'model.pth'), map_location='cpu')  # 映射到CPU
+        model_cpu = torch.load(os.path.join(args.model_dir, 'model.pth'), map_location='cpu')  # 映射到CPU，此模型不会被加载到cuda
         model = torch.load(os.path.join(args.model_dir, 'model.pth'), map_location='cpu')  # 映射到CPU
         # load weights into new model
-        log('load trained model on Train400 dataset by kai')
+        log('load trained model on Train400 dataset by kai')  #张凯的模型
     else:
         # model.load_state_dict(torch.load(os.path.join(args.model_dir, args.model_name)))
         model_cpu = torch.load(os.path.join(args.model_dir, args.model_name), map_location='cpu')
         model = torch.load(os.path.join(args.model_dir, args.model_name), map_location='cpu')
-        log('load trained model')
+        log('load trained model')   #本地训练的模型
 
     #    params = model.state_dict()
     #    print(params.values())
@@ -42,21 +42,22 @@ if __name__ == '__main__':
     model_cpu.eval()  # evaluation mode  设置为预测模式
     #    model.train()
 
-    if torch.cuda.is_available():  #GPU
-        model = model.cuda()
+    if torch.cuda.is_available():  # GPU
+        model = model.cuda()  # 加载到GPU
 
     if not os.path.exists(args.result_dir):  # 结果路径
         os.mkdir(args.result_dir)  # 创造目录
 
-    for set_cur in args.set_names:
+    for set_cur in args.set_names:  # 测试图片的文件名
 
-        if not os.path.exists(os.path.join(args.result_dir, set_cur)):
+        if not os.path.exists(os.path.join(args.result_dir, set_cur)):  # 未找到保存文件的路径，则创造路径
             os.mkdir(os.path.join(args.result_dir, set_cur))
-        psnrs = []
+        psnrs = []  # 计算psnr与ssim的数组
         ssims = []
 
         for im in os.listdir(os.path.join(args.set_dir, set_cur)):  # 返回指定的文件夹包含的文件或文件夹的名字的列表
             if im.endswith(".jpg") or im.endswith(".bmp") or im.endswith(".png"):
+                # 判断字符串是否以指定后缀结尾，如果以指定后缀结尾返回True，否则返回False
                 x = np.array(imread(os.path.join(args.set_dir, set_cur, im)), dtype=np.float32) / 255.0
                 #  dtype:数组中的数据类型
 
