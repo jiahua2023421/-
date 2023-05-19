@@ -59,14 +59,17 @@ if __name__ == '__main__':
             if im.endswith(".jpg") or im.endswith(".bmp") or im.endswith(".png"):
                 # 判断字符串是否以指定后缀结尾，如果以指定后缀结尾返回True，否则返回False
                 x = np.array(imread(os.path.join(args.set_dir, set_cur, im)), dtype=np.float32) / 255.0
+                # 读入文件，float32位，得到后每个数/255,归一化
                 #  dtype:数组中的数据类型
 
-                np.random.seed(seed=0)  # for reproducibility
-                y = x + np.random.normal(0, args.sigma / 255.0, x.shape)  # Add Gaussian noise without clipping
-                y = y.astype(np.float32)
+                np.random.seed(seed=0)  # for reproducibility 随机数种子
+                y = x + np.random.normal(0, args.sigma / 255.0, x.shape)   # 从正态（高斯）分布中抽取随机样本
+                # 分布的均值（中心）0，分布的标准差（宽度）噪声级别/255 输出值的维度。为X的维度
+                # Add Gaussian noise without clipping
+                y = y.astype(np.float32)  # 转换数据类型 float32位
                 y_ = torch.from_numpy(y).view(1, -1, y.shape[0], y.shape[1])
 
-                # torch.cuda.synchronize()
+                torch.cuda.synchronize()
                 start_time = time.time()
                 # ceshi = y_.nelement
                 # ceshi2 = y_.squeeze(2)
@@ -79,9 +82,9 @@ if __name__ == '__main__':
                 x_ = x_.view(y.shape[0], y.shape[1])
                 x_ = x_.cpu()
                 x_ = x_.detach().numpy().astype(np.float32)
-                # torch.cuda.synchronize()
-                # elapsed_time = time.time() - start_time
-                # print('%10s : %10s : %2.4f second' % (set_cur, im, elapsed_time))
+                torch.cuda.synchronize()
+                elapsed_time = time.time() - start_time
+                print('%10s : %10s : %2.4f second' % (set_cur, im, elapsed_time))
 
                 psnr_x_ = compare_psnr(x, x_)
                 ssim_x_ = compare_ssim(x, x_)
