@@ -1,18 +1,18 @@
-import glob
-import cv2
+import glob   # 文件名操作模块glob
+import cv2     # 读取图像首先要导入OpenCV包
 import numpy as np
-from torch.utils.data import Dataset
+from torch.utils.data import Dataset   # torch.utils.data.Dataset（Dataset） 是一个表示数据集的抽象类
 import torch
 import os
 from PIL import Image
 
 # 参数
-patch_size, stride = 40, 10
-aug_times = 1
-scales = [1, 0.9, 0.8, 0.7]
-batch_size = 128
+patch_size, stride = 40, 10  # 填充大小，步长
+aug_times = 1   # 增强次数，每个图块生成几张增强图像
+scales = [1, 0.9, 0.8, 0.7] #
+batch_size = 128      # 批量大小
 
-#图片加噪声
+# 图片加噪声
 class DenoisingDataset(Dataset):
     """Dataset wrapping tensors.
     Arguments:
@@ -23,15 +23,17 @@ class DenoisingDataset(Dataset):
         super(DenoisingDataset, self).__init__()
         self.xs = xs
         self.sigma = sigma
+        # 数据设置类的初始化xs (Tensor):清洁图像， sigma: 噪声级
 
-    def __getitem__(self, index):
+
+    def __getitem__(self, index): # 用于得到批量数据内容
         batch_x = self.xs[index]
-        noise = torch.randn(batch_x.size()).mul_(self.sigma/255.0)
-        batch_y = batch_x + noise
-        return batch_y, batch_x
+        noise = torch.randn(batch_x.size()).mul_(self.sigma/255.0) # 生成噪声，size定义形状，与对象相同
+        batch_y = batch_x + noise   # 加噪声
+        return batch_y, batch_x    # 返回批量batch_y, batch_x
 
     def __len__(self):
-        return self.xs.size(0)
+        return self.xs.size(0) # 返回xs.size(0)指batchsize批量大小的值
 
 #保存图片
 def save_result(result, path):
@@ -51,12 +53,12 @@ def save_result(result, path):
 def show(x, title=None, cbar=False, figsize=None):
     import matplotlib.pyplot as plt
     plt.figure(figsize=figsize)
-    plt.imshow(x, interpolation='nearest', cmap='gray')
+    plt.imshow(x, interpolation='nearest', cmap='gray')# #interpolation 插值方法  #cmap: 颜色图谱（colormap), 默认绘制为RGB(A)颜色空间
     if title:
         plt.title(title)
     if cbar:
         plt.colorbar()
-    plt.show()
+    plt.show() # 输出图片
 
 #旋转图片
 def data_aug(img, mode=0):
@@ -64,13 +66,13 @@ def data_aug(img, mode=0):
     if mode == 0:
         return img
     elif mode == 1:
-        return np.flipud(img)
+        return np.flipud(img) # 上下翻转张量
     elif mode == 2:
-        return np.rot90(img)
+        return np.rot90(img) # 进行90度的旋转，轴1到轴2的方向
     elif mode == 3:
         return np.flipud(np.rot90(img))
     elif mode == 4:
-        return np.rot90(img, k=2)
+        return np.rot90(img, k=2) # K,以90度旋转的次数
     elif mode == 5:
         return np.flipud(np.rot90(img, k=2))
     elif mode == 6:
@@ -81,7 +83,7 @@ def data_aug(img, mode=0):
 #图片大小调整
 def gen_patches(file_name):
     # get multiscale patches from a single image
-    img = cv2.imread(file_name, 0)  # gray scale
+    img = cv2.imread(file_name, 0)  # gray scale flag=0
     h, w = img.shape
     patches = []
     for s in scales:
