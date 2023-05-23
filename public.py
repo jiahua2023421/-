@@ -23,7 +23,7 @@ def parse_args(flag):
         # 训练
         train_parser = argparse.ArgumentParser(description='PyTorch DnCNN')#创建训练解析器
         train_parser.add_argument('--model', default='DnCNN', type=str, help='choose a type of model')#选择训练模型
-        train_parser.add_argument('--batch_size', default=128, type=int, help='batch size')#批量大小  整型   默认大小128
+        train_parser.add_argument('--batch_size', default=64, type=int, help='batch size')#批量大小  整型   默认大小128
         train_parser.add_argument('--train_data', default='data/Train400', type=str, help='path of train data')#训练数据  字符串型  默认 data/Train400  路径
         train_parser.add_argument('--sigma', default=25, type=int, help='noise level')#噪声水平 整型 默认25
         train_parser.add_argument('--epoch', default=180, type=int, help='number of train epoches')#epoch 整型  默认180
@@ -67,3 +67,4 @@ class sum_squared_error(_Loss):  # PyTorch 0.4.1
     def forward(self, input, target):
         # 返回torch.sum(torch.pow(input-target,2),(0,1,2,3)).div_(2)
         return torch.nn.functional.mse_loss(input, target, size_average=None, reduce=None, reduction='sum').div_(2)
+                # 测量元素均方误差
