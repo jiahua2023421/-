@@ -80,7 +80,7 @@ def data_aug(img, mode=0):
     elif mode == 7:
         return np.flipud(np.rot90(img, k=3))
 
-#图片大小调整
+# get multiscale patches from a single image从单个图像中获取多尺度补丁
 def gen_patches(file_name):
     # get multiscale patches from a single image
     img = cv2.imread(file_name, 0)  # gray scale flag=0
@@ -88,14 +88,14 @@ def gen_patches(file_name):
     patches = []
     for s in scales:
         h_scaled, w_scaled = int(h*s), int(w*s)
-        img_scaled = cv2.resize(img, (h_scaled, w_scaled), interpolation=cv2.INTER_CUBIC)
+        img_scaled = cv2.resize(img, (h_scaled, w_scaled), interpolation=cv2.INTER_CUBIC)# 以s的比例缩放图像得到img_scaled
         # extract patches
         for i in range(0, h_scaled-patch_size+1, stride):
             for j in range(0, w_scaled-patch_size+1, stride):
-                x = img_scaled[i:i+patch_size, j:j+patch_size]
-                for k in range(0, aug_times):
-                    x_aug = data_aug(x, mode=np.random.randint(0, 8))
-                    patches.append(x_aug)
+                x = img_scaled[i:i+patch_size, j:j+patch_size]#从上到下，从左到右，按步长以补丁大小截取图像块
+                for k in range(0, aug_times):# 这里表示操作一次aug_times=1
+                    x_aug = data_aug(x, mode=np.random.randint(0, 8))# 对x进行翻转，角度随机
+                    patches.append(x_aug)# 将得到的x_aug加到patches中
     return patches
 
 #图片归一化
@@ -108,12 +108,14 @@ def datagenerator(data_dir='data/Train400', verbose=False):
     for i in range(len(file_list)):
         patches = gen_patches(file_list[i])
         for patch in patches:
-            data.append(patch)
+            data.append(patch)# 按补丁顺序向数据中加补丁
         if verbose:
             print(str(i+1) + '/' + str(len(file_list)) + ' is done ^_^')
+
     data = np.array(data, dtype='uint8')
     data = np.expand_dims(data, axis=3)
-    discard_n = len(data)-len(data)//batch_size*batch_size  # because of batch namalization
+    tes=len(data)
+    discard_n = len(data)-len(data)//batch_size*batch_size  # because of batch namalization，
     data = np.delete(data, range(discard_n), axis=0)
     print('^_^-training data finished-^_^')
     return data
