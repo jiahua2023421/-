@@ -4,25 +4,94 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcf5cd65-6650-4f6d-bc5d-3a3b87d14f04" name="更改" comment="训练模型">
-      <change afterPath="$PROJECT_DIR$/checkpoint/model_002.pth" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/checkpoint/net_epoch_1_100.pth" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/checkpoint/net_epoch_1_50.pth" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results1/01deamnet.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results1/02deamnet.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results1/03deamnet.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results1/04deamnet.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results1/05deamnet.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results1/06deamnet.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results1/07deamnet.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results1/08deamnet.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results1/09deamnet.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results1/10deamnet.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results1/11deamnet.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results1/12deamnet.png" afterDir="false" />
+    <list default="true" id="fcf5cd65-6650-4f6d-bc5d-3a3b87d14f04" name="更改" comment="测试数据并以文本形式保存结果">
+      <change afterPath="$PROJECT_DIR$/results1/Set68/results.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test001deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test002deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test003deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test004deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test005deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test006deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test007deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test008deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test009deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test010deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test011deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test012deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test013deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test014deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test015deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test016deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test017deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test018deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test019deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test020deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test021deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test022deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test023deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test024deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test025deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test026deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test027deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test028deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test029deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test030deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test031deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test032deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test033deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test034deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test035deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test036deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test037deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test038deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test039deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test040deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test041deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test042deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test043deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test044deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test045deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test046deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test047deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test048deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test049deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test050deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test051deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test052deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test053deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test054deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test055deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test056deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test057deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test058deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test059deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test060deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test061deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test062deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test063deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test064deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test065deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test066deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test067deamnet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/results1/Set68/test068deamnet.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results1/01_dncnn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results1/01deamnet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results1/02_dncnn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results1/02deamnet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results1/03_dncnn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results1/03deamnet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results1/04_dncnn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results1/04deamnet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results1/05deamnet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results1/06deamnet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results1/07deamnet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results1/08deamnet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results1/09deamnet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results1/10deamnet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results1/11deamnet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results1/12deamnet.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -261,7 +330,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686125740482</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="测试数据并以文本形式保存结果">
+      <created>1686142503623</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1686142503623</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -286,6 +362,7 @@
     <MESSAGE value="测试deamnet" />
     <MESSAGE value="查看图片，保存图片" />
     <MESSAGE value="训练模型" />
-    <option name="LAST_COMMIT_MESSAGE" value="训练模型" />
+    <MESSAGE value="测试数据并以文本形式保存结果" />
+    <option name="LAST_COMMIT_MESSAGE" value="测试数据并以文本形式保存结果" />
   </component>
 </project>
