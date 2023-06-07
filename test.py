@@ -125,7 +125,7 @@ parser.add_argument("--pretrained", type=str, default="./Deam_models/", help='pa
 parser.add_argument("--test_data", type=str, default='Set12', help='test dataset such as Set12, Set68 and Urban100')
 parser.add_argument("--test_noiseL", type=float, default=15, help='noise level used on test set')
 
-parser.add_argument('--data_dir', type=str, default='./Dataset')
+parser.add_argument('--data_dir', type=str, default='./data')
 parser.add_argument('--Isreal', default=False, help='If training/testing on RGB images')
 
 opt = parser.parse_args()
@@ -158,7 +158,7 @@ def main():
     model.eval()
 
     # print('Loading data info ...\n')
-    files_path = os.path.join(opt.data_dir, 'test', opt.test_data)
+    files_path = os.path.join(opt.data_dir, 'Test', opt.test_data)
     files_source = os.listdir(files_path)
 
     psnr_test = 0
