@@ -15,7 +15,7 @@ from torch.autograd import Variable
  # 私人库
 
 from public import parse_args, log
-from data_process import save_result
+from data_process import save_result, show
 from model import DnCNN, Deam
 #
 # if __name__ == '__main__':
@@ -100,7 +100,7 @@ from model import DnCNN, Deam
 #
 #                 # if args.save_result:
 #                 name, ext = os.path.splitext(im)  # 文件名 后缀
-#                 # show(np.hstack((y, x_)))  # show the image
+#                 show(np.hstack((y, x_)))  # show the image
 #                 save_result(x_, path=os.path.join(args.result_dir, set_cur,
 #                                                   name + '_dncnn' + ext))
 #                 # save the denoised image  矩阵 ， 路径
@@ -127,7 +127,7 @@ parser.add_argument("--test_noiseL", type=float, default=15, help='noise level u
 
 parser.add_argument('--data_dir', type=str, default='./data')
 parser.add_argument('--Isreal', default=False, help='If training/testing on RGB images')
-
+parser.add_argument('--result_dir', default='results1', type=str, help='directory of test dataset')#测试结果目录
 opt = parser.parse_args()
 
 
@@ -165,6 +165,8 @@ def main():
     i = 1
 
     for f in files_source:
+        if not os.path.exists(os.path.join(opt.result_dir)):  # 未找到保存文件的路径，则创造路径
+            os.mkdir(os.path.join(opt.result_dir))
         SEED = 0
         torch.manual_seed(SEED)
         torch.cuda.manual_seed(SEED)
@@ -199,6 +201,14 @@ def main():
         psnr = batch_PSNR(torch.clamp(Out, 0., 1.), ISource, 1.)
         psnr_test += psnr
         i += 1
+        name, ext = os.path.splitext(f)  # 文件名 后缀
+        y = torch.squeeze(Out)
+        y1 = y.cpu().numpy()
+        x = torch.squeeze(INoisy_input)
+        x1 = x.cpu().numpy()
+        show(np.hstack((y1, x1)))  # show the image
+        save_result(y1, path=os.path.join(opt.result_dir,
+                                    name + '_dncnn' + ext))
     psnr_test /= len(files_source)
     print("PSNR on test data %f" % psnr_test)
     print("\n")

@@ -5,36 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fcf5cd65-6650-4f6d-bc5d-3a3b87d14f04" name="更改" comment="测试deamnet">
-      <change afterPath="$PROJECT_DIR$/Dataset/Datasettest/Set12/01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dataset/Datasettest/Set12/02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dataset/Datasettest/Set12/03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dataset/Datasettest/Set12/04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dataset/Datasettest/Set12/05.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dataset/Datasettest/Set12/06.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dataset/Datasettest/Set12/07.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dataset/Datasettest/Set12/08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dataset/Datasettest/Set12/09.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dataset/Datasettest/Set12/10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dataset/Datasettest/Set12/11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dataset/Datasettest/Set12/12.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dataset/test/Set12/01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dataset/test/Set12/02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dataset/test/Set12/03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dataset/test/Set12/04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dataset/test/Set12/05.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dataset/test/Set12/06.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dataset/test/Set12/07.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dataset/test/Set12/08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dataset/test/Set12/09.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dataset/test/Set12/10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dataset/test/Set12/11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dataset/test/Set12/12.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dataset/train/DIV2K_train_HR/0001.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dataset/train/gen_dataset_real.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Deam_models/Real.pth" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Deam_models/noise15.pth" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Deam_models/noise25.pth" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Deam_models/noise50.pth" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -216,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686121626197</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="测试deamnet">
+      <created>1686121872137</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1686121872137</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
