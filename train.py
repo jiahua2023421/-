@@ -7,14 +7,15 @@ import numpy as np
 from torch.optim.lr_scheduler import MultiStepLR
 from torch.utils.data import DataLoader
 # 私人库
-from model import DnCNN
+from model import DnCNN, ADNet
 from public import findLastCheckpoint, parse_args, sum_squared_error, log
 import data_process as dp
 from data_process import DenoisingDataset
 
 if __name__ == '__main__':
     # 加载模型
-    model = DnCNN()
+    # model = DnCNN()
+    model = ADNet()
     # 参数初始化
     # 运行解析器并放置提取的数据在 argparse.Namespace 对象
     args = parse_args(0)
@@ -32,7 +33,7 @@ if __name__ == '__main__':
         print('resuming by loading epoch %03d' % initial_epoch)
         # model.load_state_dict(torch.load(os.path.join(save_dir, 'model_%03d.pth' % initial_epoch)))
         model = torch.load(os.path.join(save_dir, 'model_%03d.pth' % initial_epoch))  # 加载模型
-    model.train()
+    # model.train()
     # model.train()的作用是启用 Batch Normalization 和 Dropout。
 
 # 如果模型中有BN层(Batch Normalization）和Dropout，需要在训练时添加model.train()。
