@@ -208,7 +208,7 @@ def main():
         x1 = x.cpu().numpy()
         show(np.hstack((y1, x1)))  # show the image
         save_result(y1, path=os.path.join(opt.result_dir,
-                                    name + '_dncnn' + ext))
+                                    name + 'deamnet' + ext))
     psnr_test /= len(files_source)
     print("PSNR on test data %f" % psnr_test)
     print("\n")
