@@ -202,8 +202,8 @@ def main():
         psnr_test += psnr
         i += 1
         name, ext = os.path.splitext(f)  # 文件名 后缀
-        y = torch.squeeze(Out)
-        y1 = y.cpu().numpy()
+        y = torch.squeeze(Out)  #tesnsor降维
+        y1 = y.cpu().numpy()    #先加载到CPU，再转为数组
         x = torch.squeeze(INoisy_input)
         x1 = x.cpu().numpy()
         show(np.hstack((y1, x1)))  # show the image
