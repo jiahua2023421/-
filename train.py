@@ -154,7 +154,7 @@ parser.add_argument('--pretrained', default='./Deam_models', help='Location to l
 parser.add_argument("--noiseL", type=float, default=25, help='noise level')
 parser.add_argument('--save_folder', default='./checkpoint/', help='Location to save checkpoint models')
 parser.add_argument('--statistics', default='./statistics/', help='Location to save statistics')
-
+parser.add_argument('--epoch', default=180, type=int, help='number of train epoches')#epoch 整型  默认180
 # Testing settings
 parser.add_argument('--testBatchSize', type=int, default=1, help='testing batch size, default=1')
 parser.add_argument('--seed', type=int, default=123, help='random seed to use. Default=123')
@@ -209,10 +209,11 @@ def train(epoch):
             model.train()
         if not os.path.exists(opt.save_folder):  # 结果路径
             os.mkdir(opt.save_folder)  # 创造目录
-        torch.save(model, os.path.join(opt.save_folder, 'model_%03d.pth' % (epoch + 1)))  # 保存模型
+        #
         print("===> Epoch[{}]({}/{}): Loss: {:.4f} || Timer: {:.4f} sec.".format(epoch, iteration, len(training_data_loader), loss.data, (t1 - t0)))
     print("===> Epoch {} Complete: Avg. Loss: {:.4f}".format(epoch, epoch_loss / len(training_data_loader)))
-
+    if not os.path.exists(os.path.join(opt.save_folder, 'model_%03d.pth' % (epoch + 1))):  # 结果路径
+        torch.save(model, os.path.join(opt.save_folder, 'model_%03d.pth' % (epoch + 1)))  # 保存模型
 
 def batch_PSNR(img, imclean, data_range):
     Img = img.data.cpu().numpy().astype(np.float32)
