@@ -122,7 +122,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "0,1"
 
 parser = argparse.ArgumentParser(description="AWGN Testing......")
 parser.add_argument("--pretrained", type=str, default="./Deam_models/", help='path of log files')
-parser.add_argument("--test_data", type=str, default='Set68', help='test dataset such as Set12, Set68 and Urban100')
+parser.add_argument("--test_data", type=str, default='Set12', help='test dataset such as Set12, Set68 and Urban100')
 parser.add_argument("--test_noiseL", type=float, default=15, help='noise level used on test set')
 
 parser.add_argument('--data_dir', type=str, default='./data')
@@ -210,7 +210,7 @@ def main():
         source = torch.squeeze(ISource)
         S = source.cpu().numpy()
         # show(np.hstack((y1, x1)))  # show the image
-        save_result(y1, path=os.path.join(opt.result_dir,'Set68',
+        save_result(y1, path=os.path.join(opt.result_dir, opt.test_data,
                                     name + 'deamnet' + ext))
         ssim_x_ = compare_ssim(y1, S)
 
@@ -224,7 +224,7 @@ def main():
     psnrs.append(psnr_avg)
     ssims.append(ssim_avg)
     psnr_test /= len(files_source)
-    save_result(np.hstack((psnrs, ssims)), path=os.path.join(opt.result_dir, 'Set68', 'results.txt'))
+    save_result(np.hstack((psnrs, ssims)), path=os.path.join(opt.result_dir, opt.test_data, 'results.txt'))
     #         # 以文本形式 保存每一张图片的PSNR与SSIM结果
     log('Datset: {0:10s} \n  PSNR = {1:2.2f}dB, SSIM = {2:1.4f}'.format(opt.result_dir, psnr_avg, ssim_avg))
     print("PSNR on test data %f" % psnr_test)
