@@ -37,9 +37,15 @@ def gen_dataset(src_files, dst_path):
         file_path = glob.glob(src_path+'*')
         for file_name in file_path:
             if 'SIDD' in file_name:
-                gt_imgs = glob.glob(file_name)
+                # gt_imgs = glob.glob(file_name + '/*GT*.PNG')
+                # gt_imgs = glob.glob(file_name)
+                # ceshi = src_path + 'GT*.png'
+                # ceshi2 = glob.glob(ceshi)
+                gt_imgs = glob.glob(src_path + '/GT*.PNG')
                 gt_imgs.sort()
-                noisy_imgs = glob.glob(file_name)
+                # noisy_imgs = glob.glob(file_name + '/*NOISY*.PNG')
+                # noisy_imgs = glob.glob(file_name)
+                noisy_imgs = glob.glob(src_path + '/NOISY*.PNG')
                 noisy_imgs.sort()
                 print('SIDD processing...' + str(count))
                 for i in range(len(noisy_imgs)):
@@ -81,12 +87,12 @@ def gen_dataset(src_files, dst_path):
 
 if __name__ == "__main__":
     os.environ["CUDA_VISIBLE_DEVICES"] = "1"
-    src_path_list = ["./train/SIDD/SIDD_Medium_Srgb/Data/",
+    src_path_list = ["./data/SIDD/SIDD_Medium_Srgb/Data/",
                     "./train/RENOIR/Mi3_Aligned/",
                     "./train/RENOIR/T3i_Aligned/",
                     "./train/RENOIR/S90_Aligned/",
                     ]
-    dst_path = "./train/SIDD_RENOIR_h5/"
+    dst_path = "./data/SIDD_RENOIR_h5/"
 
     create_dir(dst_path)
     print("start...")
