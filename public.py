@@ -12,8 +12,8 @@ def parse_args(flag):
         test_parser = argparse.ArgumentParser()#创建测试解析器
         test_parser.add_argument('--set_dir', default='data/Test', type=str, help='directory of test dataset')  #测试数据目录data/Test
         test_parser.add_argument('--set_names', default=['Set68', 'Set12'], help='directory of test dataset')  #测试数据目录'Set68'，'Set12'
-        test_parser.add_argument('--sigma', default=25, type=int, help='noise level') #噪声水平 整型 默认25
-        test_parser.add_argument('--model_dir', default=os.path.join('models', 'DnCNN_sigma25'), help='directory of the model')#model模型目录
+        test_parser.add_argument('--sigma', default=50, type=int, help='noise level') #噪声水平 整型 默认25
+        test_parser.add_argument('--model_dir', default=os.path.join('models', 'DnCNN_sigma50'), help='directory of the model')#model模型目录
         # os.path.join  路径拼接
         test_parser.add_argument('--model_name', default='model_001.pth', type=str, help='the model name')#保存训练模型model_001.pth
         test_parser.add_argument('--result_dir', default='results', type=str, help='directory of test dataset')#测试结果目录
@@ -25,8 +25,8 @@ def parse_args(flag):
         train_parser.add_argument('--model', default='DnCNN', type=str, help='choose a type of model')#选择训练模型
         train_parser.add_argument('--batch_size', default=64, type=int, help='batch size')#批量大小  整型   默认大小128
         train_parser.add_argument('--train_data', default='data/Train400', type=str, help='path of train data')#训练数据  字符串型  默认 data/Train400  路径
-        train_parser.add_argument('--sigma', default=25, type=int, help='noise level')#噪声水平 整型 默认25
-        train_parser.add_argument('--epoch', default=180, type=int, help='number of train epoches')#epoch 整型  默认180
+        train_parser.add_argument('--sigma', default=50, type=int, help='noise level')#噪声水平 整型 默认25
+        train_parser.add_argument('--epoch', default=1, type=int, help='number of train epoches')#epoch 整型  默认180
         train_parser.add_argument('--lr', default=1e-3, type=float, help='initial learning rate for Adam')#学习率  float 0.001  adam优化算法
         return train_parser.parse_args()
 
