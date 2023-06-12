@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcf5cd65-6650-4f6d-bc5d-3a3b87d14f04" name="更改" comment="真实噪声测试">
-      <change afterPath="$PROJECT_DIR$/data/Test/val.h5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/train/train.h5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/real_model/model_001.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+    <list default="true" id="fcf5cd65-6650-4f6d-bc5d-3a3b87d14f04" name="更改" comment="真实噪声训练">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deam_train_model/model_001.pth" beforeDir="false" afterPath="$PROJECT_DIR$/deam_train_model/model_001.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen_dataset_real.py" beforeDir="false" afterPath="$PROJECT_DIR$/gen_dataset_real.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/real_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/real_train.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/statistics/training_logs.csv" beforeDir="false" afterPath="$PROJECT_DIR$/statistics/training_logs.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -76,7 +71,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="dncnn_train" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="dncnn_test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="-" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -88,7 +83,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dncnn_train.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dncnn_test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -163,10 +158,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.real_train" />
+        <item itemvalue="Python.dncnn_test" />
         <item itemvalue="Python.gen_dataset_real" />
         <item itemvalue="Python.deam_train" />
         <item itemvalue="Python.real_noise_test" />
-        <item itemvalue="Python.dncnn_train" />
       </list>
     </recent_temporary>
   </component>
@@ -347,7 +342,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686554616311</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="真实噪声训练">
+      <created>1686562872505</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1686562872505</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -377,17 +379,7 @@
     <MESSAGE value="deamnet测试结果" />
     <MESSAGE value="测试文件优化" />
     <MESSAGE value="真实噪声测试" />
-    <option name="LAST_COMMIT_MESSAGE" value="真实噪声测试" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/real_train.py</url>
-          <line>162</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="真实噪声训练" />
+    <option name="LAST_COMMIT_MESSAGE" value="真实噪声训练" />
   </component>
 </project>

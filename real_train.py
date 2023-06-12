@@ -72,6 +72,9 @@ cudnn.benchmark = True
 print(opt)
 
 
+
+
+
 def train(epoch):
     epoch_loss = 0
     model.train()
@@ -114,13 +117,69 @@ def batch_PSNR(img, imclean, data_range):
     Img = img.data.cpu().numpy().astype(np.float32)
     Iclean = imclean.data.cpu().numpy().astype(np.float32)
     PSNR = 0
+    SSIM1 = 0
+    SSIM2 = 0
+    SSIM3 = 0
+    SSIM = 0
+    ceshi = Img.shape[0]
     for i in range(Img.shape[0]):
         PSNR += compare_psnr(Iclean[i, :, :, :], Img[i, :, :, :], data_range=data_range)
-    return (PSNR / Img.shape[0])
+        ceshi = Iclean[i, :, :, :]
+        ceshi2 = Img[i, :, :, :]
+        # ceshi3 = Iclean[:, :]
 
+        Iclean2 = ceshi[:, :, ::-1].transpose((2, 1, 0))
+        Img2 = ceshi2[:, :, ::-1].transpose((2, 1, 0))
+        # img2 = np.resize(img2, (img1.shape[0], img1.shape[1], img1.shape[2]))
+        ce = ceshi[0]
+        ce2 = ceshi2[0]
+        show(np.hstack((Iclean2, Img2)))
+        SSIM1 += compare_ssim(ceshi[0], ceshi2[0], data_range=data_range)
+        SSIM2 += compare_ssim(ceshi[1], ceshi2[1], data_range=data_range)
+        SSIM3 += compare_ssim(ceshi[2], ceshi2[2], data_range=data_range)
+        SSIM += ((SSIM1 + SSIM2 + SSIM3)/3)
+        # print('ce')
+    return PSNR / Img.shape[0]
+
+def show(x, title=None, cbar=False, figsize=None):
+    import matplotlib.pyplot as plt
+    plt.figure(figsize=figsize)
+    plt.imshow(x)# #interpolation 插值方法  #cmap: 颜色图谱（colormap), 默认绘制为RGB(A)颜色空间
+    if title:
+        plt.title(title)
+    if cbar:
+        plt.colorbar()
+    plt.show() # 输出图片
+
+def batch_SSIM(img, imclean, data_range):
+    Img = img.data.cpu().numpy().astype(np.float32)
+    Iclean = imclean.data.cpu().numpy().astype(np.float32)
+    PSNR = 0
+    SSIM1 = 0
+    SSIM2 = 0
+    SSIM3 = 0
+    SSIM = 0
+    for i in range(Img.shape[0]):
+        PSNR += compare_psnr(Iclean[i, :, :, :], Img[i, :, :, :], data_range=data_range)
+        ceshi = Iclean[i, :, :, :]
+        ceshi2 = Img[i, :, :, :]
+        # ceshi3 = Iclean[:, :]
+
+        Iclean2 = ceshi[:, :, ::-1].transpose((2, 1, 0))
+        Img2 = ceshi2[:, :, ::-1].transpose((2, 1, 0))
+        # img2 = np.resize(img2, (img1.shape[0], img1.shape[1], img1.shape[2]))
+        ce = ceshi[0]
+        ce2 = ceshi2[0]
+
+        SSIM1 += compare_ssim(ceshi[0], ceshi2[0], data_range=data_range)
+        SSIM2 += compare_ssim(ceshi[1], ceshi2[1], data_range=data_range)
+        SSIM3 += compare_ssim(ceshi[2], ceshi2[2], data_range=data_range)
+        SSIM += ((SSIM1 + SSIM2 + SSIM3) / 3)
+    return SSIM / Img.shape[0]
 
 def test(testing_data_loader):
-    psnr_test= 0
+    psnr_test = 0
+    ssim_test = 0
     model.eval()
     for batch in testing_data_loader:
         target = Variable(batch[0])
@@ -133,7 +192,11 @@ def test(testing_data_loader):
             prediction = model(input)
             prediction = torch.clamp(prediction, 0., 1.)
         psnr_test += batch_PSNR(prediction, target, 1.)
+
+        # ssim_test += batch_SSIM(prediction, target, 1.)
+        # show(np.hstack((y, x_)))  # show the image
     print("===> Avg. PSNR: {:.4f} dB".format(psnr_test / len(testing_data_loader)))
+    # print("===> Avg. PSNR: {:.4f} dB".format(ssim_test / len(testing_data_loader)))
     return psnr_test / len(testing_data_loader)
 
 
