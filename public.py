@@ -12,8 +12,8 @@ def parse_args(flag):
         test_parser = argparse.ArgumentParser()#创建测试解析器
         test_parser.add_argument('--set_dir', default='data/Test', type=str, help='directory of test dataset')  #测试数据目录data/Test
         test_parser.add_argument('--set_names', default=['Set68', 'Set12'], help='directory of test dataset')  #测试数据目录'Set68'，'Set12'
-        test_parser.add_argument('--sigma', default=50, type=int, help='noise level') #噪声水平 整型 默认25
-        test_parser.add_argument('--model_dir', default=os.path.join('models', 'DnCNN_sigma50'), help='directory of the model')#model模型目录
+        test_parser.add_argument('--sigma', default=15, type=int, help='noise level') #噪声水平 整型 默认25
+        test_parser.add_argument('--model_dir', default=os.path.join('models', 'DnCNN_sigma15'), help='directory of the model')#model模型目录
         # os.path.join  路径拼接
         test_parser.add_argument('--model_name', default='model_001.pth', type=str, help='the model name')#保存训练模型model_001.pth
         test_parser.add_argument('--result_dir', default='results', type=str, help='directory of test dataset')#测试结果目录
@@ -68,3 +68,6 @@ class sum_squared_error(_Loss):  # PyTorch 0.4.1
         # 返回torch.sum(torch.pow(input-target,2),(0,1,2,3)).div_(2)
         return torch.nn.functional.mse_loss(input, target, size_average=None, reduce=None, reduction='sum').div_(2)
                 # 测量元素均方误差
+def path_creat(path):
+    if not os.path.exists(path):  # 若不存在路径则添加路径
+        os.makedirs(path)

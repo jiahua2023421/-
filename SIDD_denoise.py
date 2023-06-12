@@ -1,8 +1,3 @@
-
-
-
-
-
 import os
 import numpy as np
 from skimage import img_as_ubyte

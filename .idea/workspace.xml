@@ -5,16 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fcf5cd65-6650-4f6d-bc5d-3a3b87d14f04" name="更改" comment="deamnet测试结果">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2023_5_19_21_01____.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_2023_5_19_21_01____.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/_2023_5_19_21_43____.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/_2023_5_19_21_43____.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Benchmark_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Benchmark_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SIDD_denoise.py" beforeDir="false" afterPath="$PROJECT_DIR$/SIDD_denoise.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_process.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public.py" beforeDir="false" afterPath="$PROJECT_DIR$/public.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +47,7 @@
       <recent name="C:\Users\张家华\PycharmProjects\-" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.train">
+  <component name="RunManager" selected="Python.test">
     <configuration name="ceshi" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="-" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -138,8 +134,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.train" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.train" />
         <item itemvalue="Python.data" />
         <item itemvalue="Python.ceshi" />
       </list>
@@ -280,7 +276,21 @@
       <option name="project" value="LOCAL" />
       <updated>1686228085563</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="deamnet测试结果">
+      <created>1686546268969</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1686546268969</updated>
+    </task>
+    <task id="LOCAL-00020" summary="deamnet测试结果">
+      <created>1686546380125</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1686546380125</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

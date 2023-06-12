@@ -4,6 +4,7 @@ import numpy as np
 from torch.utils.data import Dataset   # torch.utils.data.Dataset（Dataset） 是一个表示数据集的抽象类
 import torch
 import os
+import public
 from PIL import Image
 
 # 参数
@@ -40,6 +41,7 @@ def save_result(result, path):
     path = path if path.find('.') != -1 else path + '.png'
     ext = os.path.splitext(path)[-1]  # 文件扩展名
     if ext in ('.txt', '.dlm'):
+        # public.path_creat(path)
         np.savetxt(path, result, fmt='%2.4f')  # 保存为txt文件，数据按%2.4f格式写入
     else:
         # 标准化

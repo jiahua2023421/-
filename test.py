@@ -8,6 +8,7 @@ import argparse
 import pandas as pd
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 import numpy as np
+import public
 from imageio import imread
 from skimage.metrics import structural_similarity as compare_ssim
 from skimage.metrics import peak_signal_noise_ratio as compare_psnr
@@ -112,7 +113,10 @@ if __name__ == '__main__':
         psnrs.append(psnr_avg)
         ssims.append(ssim_avg)
         # if args.save_result:
-        save_result(np.hstack((psnrs, ssims)), path=os.path.join(args.result_dir, 'sigma50', set_cur, 'results.txt'))
+        # ceshi = os.path.join(args.result_dir, 'sigma50', set_cur)
+        public.path_creat(os.path.join(args.result_dir, 'sigma'+str(args.sigma), set_cur))
+        # ceshi = 'sigma'+str(args.sigma)
+        save_result(np.hstack((psnrs, ssims)), path=os.path.join(args.result_dir, 'sigma'+str(args.sigma), set_cur, 'results.txt'))
         # 以文本形式 保存每一张图片的PSNR与SSIM结果
         log('Datset: {0:10s} \n  PSNR = {1:2.2f}dB, SSIM = {2:1.4f}'.format(set_cur, psnr_avg, ssim_avg))
 
