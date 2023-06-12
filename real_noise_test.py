@@ -11,7 +11,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "0,1"
 parser = argparse.ArgumentParser()
 parser.add_argument('--pretrained', type=str, default='./Deam_models/', help="Checkpoints directory,  (default:./checkpoints)")
 parser.add_argument('--Isreal', default=True, help='Location to save checkpoint models')
-parser.add_argument('--data_folder', type=str, default='./Dataset/Benchmark_test', help='Location to save checkpoint models')
+parser.add_argument('--data_folder', type=str, default='./data/Benchmark_test', help='Location to save checkpoint models')
 parser.add_argument('--out_folder', type=str, default='./Dnd_result', help='Location to save checkpoint models')
 parser.add_argument('--model', type=str, default='Real.pth', help='Location to save checkpoint models')
 parser.add_argument('--Type', type=str, default='SIDD', help='To choose the testing benchmark dataset, SIDD or Dnd')
