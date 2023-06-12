@@ -46,9 +46,15 @@ DnCNN网络架构
 model.py
 
 ## 张家华
-train.py
-test.py  优化了测试过程，如果图片小，使用GPU，如果图片较大，使用CPU
-
+模型名称  sigma  数据集   PSNR       SSIM
+dncnn     25     Set12   27.6433     0.8241
+dncnn     25     Set68   23.7726     0.6610
+deamnet   15     Set12   33.1894     0.9575
+deamnet   15     Set68   31.9055     0.9433
+deamnet   25     Set12   30.8141     0.9353
+deamnet   25     Set68   29.4438     0.9065
+deamnet   50     Set12   27.7408     0.8913
+deamnet   50     Set68   26.5378     0.8369
 ## 赵锦浩
 data_process.py
 
