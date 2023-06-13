@@ -1,5 +1,3 @@
-# import denoise_srgb
-# import bundle_submissions_srgb
 import SIDD_denoise
 import torch
 from model import Deam
@@ -28,5 +26,5 @@ model.eval()
 #     denoise_srgb(model, args.data_folder, args.out_folder)
 #     bundle_submissions_srgb(args.out_folder)
 # else:
-SIDD_denoise.test(args)
+# SIDD_denoise.test(args)
 
