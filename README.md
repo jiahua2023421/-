@@ -55,6 +55,7 @@ model.py
 ### deamnet   25     Set68   29.4438     0.9065
 ### deamnet   50     Set12   27.7408     0.8913
 ### deamnet   50     Set68   26.5378     0.8369
+### deamnet  SIDD真实噪声数据集切片  46.6881  0.9870
 ## 赵锦浩
 data_process.py
 
