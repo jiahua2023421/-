@@ -34,7 +34,7 @@ def denoise(model, noisy_image, list):
     with torch.autograd.set_grad_enabled(False):
         torch.cuda.synchronize()
         phi_Z = model(noisy_image)
-        # psnr_test = batch_PSNR(phi_Z, noisy_image, 1.)  #计算两张图片的PSNR
+        psnr_test = batch_PSNR(phi_Z, noisy_image, 1.)  #计算两张图片的PSNR
         # print("===> Avg. PSNR: {:.4f} dB".format(psnr_test))
         Img = noisy_image.data.cpu().numpy().astype(np.float32)
         Iclean = phi_Z.data.cpu().numpy().astype(np.float32)
@@ -52,9 +52,9 @@ def denoise(model, noisy_image, list):
     return im_denoise
 
 
-def batch_PSNR(img, imclean, data_range):
-    Img = img.data.cpu().numpy().astype(np.float32)
-    Iclean = imclean.data.cpu().numpy().astype(np.float32)
+def batch_PSNR(img, imclean, data_range):    # 1，3，256，256 tensor
+    Img = img.data.cpu().numpy().astype(np.float32)  # ndarray 1 3 256 256
+    Iclean = imclean.data.cpu().numpy().astype(np.float32)  # ndarray 1 3 256 256
     PSNR = 0
     SSIM1 = 0
     SSIM2 = 0
@@ -62,7 +62,7 @@ def batch_PSNR(img, imclean, data_range):
     SSIM = 0
     ceshi = Img.shape[0]
     for i in range(Img.shape[0]):
-        PSNR += compare_psnr(Iclean[i, :, :, :], Img[i, :, :, :], data_range=data_range)
+        PSNR += compare_psnr(Iclean[i, :, :, :], Img[i, :, :, :], data_range=data_range)  # 3 256 256 ndarray
         ceshi = Iclean[i, :, :, :]
         ceshi2 = Img[i, :, :, :]
         # ceshi3 = Iclean[:, :]
@@ -72,7 +72,7 @@ def batch_PSNR(img, imclean, data_range):
         # img2 = np.resize(img2, (img1.shape[0], img1.shape[1], img1.shape[2]))
         ce = ceshi[0]
         ce2 = ceshi2[0]
-        # show(np.hstack((Iclean2, Img2)))
+        show(np.hstack((Iclean2, Img2)))
         SSIM1 += compare_ssim(ceshi[0], ceshi2[0], data_range=data_range)
         SSIM2 += compare_ssim(ceshi[1], ceshi2[1], data_range=data_range)
         SSIM3 += compare_ssim(ceshi[2], ceshi2[2], data_range=data_range)
