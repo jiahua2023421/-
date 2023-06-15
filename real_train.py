@@ -2,17 +2,12 @@
 from __future__ import print_function
 
 import os
-import torch
+
 import time
-import torch.optim as optim
-import numpy as np
-from torch.optim.lr_scheduler import MultiStepLR
-from torch.utils.data import DataLoader
+
 # 私人库
-from model import DnCNN, ADNet, Deam
-from public import findLastCheckpoint, parse_args, sum_squared_error, log
-import data_process as dp
-from data_process import DenoisingDataset
+from model import Deam
+
 
 import socket
 import pandas as pd
@@ -46,7 +41,7 @@ parser.add_argument('--hr_train_dataset', type=str, default='', help='the traini
 parser.add_argument('--Ispretrained', type=bool, default=True, help='If load checkpoint model')
 parser.add_argument('--pretrained_sr', default='Real.pth', help='sr pretrained base model')
 parser.add_argument('--pretrained', default='./Deam_models', help='Location to load checkpoint models')
-parser.add_argument("--noiseL", type=float, default=25, help='noise level')
+
 parser.add_argument('--save_folder', default='./real_model/', help='Location to save checkpoint models')
 parser.add_argument('--statistics', default='./statistics/', help='Location to save statistics')
 parser.add_argument('--epoch', default=180, type=int, help='number of train epoches')#epoch 整型  默认180
@@ -79,13 +74,10 @@ def train(epoch):
     epoch_loss = 0
     model.train()
     for iteration, batch in enumerate(training_data_loader, 1):
-        target = Variable(batch[0])
-        noise = torch.FloatTensor(target.size()).normal_(mean=0, std=opt.val_noiseL / 255.)
-        input = target + noise
-
+        target = Variable(batch[1])  # 0 噪声   1 干净
+        input = Variable(batch[0])  # 输入为噪声图片
         input = input.cuda()
         target = target.cuda()
-
         model.zero_grad()
         optimizer.zero_grad()
         t0 = time.time()
@@ -105,13 +97,18 @@ def train(epoch):
             SC = 'net_epoch_' + str(epoch) + '_' + str(iteration + 1) + '.pth'
             # torch.save(model.state_dict(), os.path.join(opt.save_folder, SC))
             model.train()
-        if not os.path.exists(opt.save_folder):  # 结果路径
-            os.mkdir(opt.save_folder)  # 创造目录
-        #
         print("===> Epoch[{}]({}/{}): Loss: {:.4f} || Timer: {:.4f} sec.".format(epoch, iteration, len(training_data_loader), loss.data, (t1 - t0)))
     print("===> Epoch {} Complete: Avg. Loss: {:.4f}".format(epoch, epoch_loss / len(training_data_loader)))
-    if not os.path.exists(os.path.join(opt.save_folder, 'model_%03d.pth' % (epoch))):  # 结果路径
-        torch.save(model, os.path.join(opt.save_folder, 'model_%03d.pth' % (epoch)))  # 保存模型
+    if not os.path.exists(opt.save_folder):  # 结果路径
+        os.mkdir(opt.save_folder)  # 创造目录
+    torch.save(model, os.path.join(opt.save_folder, 'model_%03d.pth' % (epoch)))  # 保存模型
+
+def tensor_ndarray(data):
+    data1 = data.data.cpu().numpy().astype(np.float32)
+    data2 = data1[0, :, :, :]
+    data3 = data2[:, :, ::-1].transpose((1, 2, 0))
+    return data3
+
 
 def batch_PSNR(img, imclean, data_range):
     Img = img.data.cpu().numpy().astype(np.float32)
@@ -121,82 +118,49 @@ def batch_PSNR(img, imclean, data_range):
     SSIM2 = 0
     SSIM3 = 0
     SSIM = 0
-    ceshi = Img.shape[0]
     for i in range(Img.shape[0]):
         PSNR += compare_psnr(Iclean[i, :, :, :], Img[i, :, :, :], data_range=data_range)
         ceshi = Iclean[i, :, :, :]
         ceshi2 = Img[i, :, :, :]
-        # ceshi3 = Iclean[:, :]
-
-        Iclean2 = ceshi[:, :, ::-1].transpose((2, 1, 0))
-        Img2 = ceshi2[:, :, ::-1].transpose((2, 1, 0))
-        # img2 = np.resize(img2, (img1.shape[0], img1.shape[1], img1.shape[2]))
-        ce = ceshi[0]
-        ce2 = ceshi2[0]
-        show(np.hstack((Iclean2, Img2)))
         SSIM1 += compare_ssim(ceshi[0], ceshi2[0], data_range=data_range)
         SSIM2 += compare_ssim(ceshi[1], ceshi2[1], data_range=data_range)
         SSIM3 += compare_ssim(ceshi[2], ceshi2[2], data_range=data_range)
         SSIM += ((SSIM1 + SSIM2 + SSIM3)/3)
-        # print('ce')
-    return PSNR / Img.shape[0]
+    return PSNR / Img.shape[0], SSIM / Img.shape[0]
 
 def show(x, title=None, cbar=False, figsize=None):
     import matplotlib.pyplot as plt
     plt.figure(figsize=figsize)
-    plt.imshow(x)# #interpolation 插值方法  #cmap: 颜色图谱（colormap), 默认绘制为RGB(A)颜色空间
+    plt.imshow(x)  # #interpolation 插值方法  #cmap: 颜色图谱（colormap), 默认绘制为RGB(A)颜色空间
     if title:
         plt.title(title)
     if cbar:
         plt.colorbar()
-    plt.show() # 输出图片
+    plt.show()  # 输出图片
 
-def batch_SSIM(img, imclean, data_range):
-    Img = img.data.cpu().numpy().astype(np.float32)
-    Iclean = imclean.data.cpu().numpy().astype(np.float32)
-    PSNR = 0
-    SSIM1 = 0
-    SSIM2 = 0
-    SSIM3 = 0
-    SSIM = 0
-    for i in range(Img.shape[0]):
-        PSNR += compare_psnr(Iclean[i, :, :, :], Img[i, :, :, :], data_range=data_range)
-        ceshi = Iclean[i, :, :, :]
-        ceshi2 = Img[i, :, :, :]
-        # ceshi3 = Iclean[:, :]
 
-        Iclean2 = ceshi[:, :, ::-1].transpose((2, 1, 0))
-        Img2 = ceshi2[:, :, ::-1].transpose((2, 1, 0))
-        # img2 = np.resize(img2, (img1.shape[0], img1.shape[1], img1.shape[2]))
-        ce = ceshi[0]
-        ce2 = ceshi2[0]
-
-        SSIM1 += compare_ssim(ceshi[0], ceshi2[0], data_range=data_range)
-        SSIM2 += compare_ssim(ceshi[1], ceshi2[1], data_range=data_range)
-        SSIM3 += compare_ssim(ceshi[2], ceshi2[2], data_range=data_range)
-        SSIM += ((SSIM1 + SSIM2 + SSIM3) / 3)
-    return SSIM / Img.shape[0]
 
 def test(testing_data_loader):
     psnr_test = 0
     ssim_test = 0
     model.eval()
     for batch in testing_data_loader:
-        target = Variable(batch[0])
-        noise = torch.FloatTensor(target.size()).normal_(mean=0, std=opt.noiseL / 255.)
-        input = target + noise
-
+        target = Variable(batch[1])  # 1干净图片  0噪声图片
+        input = Variable(batch[0])
         input = input.cuda()
         target = target.cuda()
         with torch.no_grad():
             prediction = model(input)
             prediction = torch.clamp(prediction, 0., 1.)
-        psnr_test += batch_PSNR(prediction, target, 1.)
-
-        # ssim_test += batch_SSIM(prediction, target, 1.)
-        # show(np.hstack((y, x_)))  # show the image
+        p = tensor_ndarray(prediction)
+        i = tensor_ndarray(input)
+        t = tensor_ndarray(target)
+        show(np.hstack((p, i, t)))
+        psnr, ssim = batch_PSNR(prediction, target, 1.)
+        psnr_test += psnr
+        ssim_test += ssim
     print("===> Avg. PSNR: {:.4f} dB".format(psnr_test / len(testing_data_loader)))
-    # print("===> Avg. PSNR: {:.4f} dB".format(ssim_test / len(testing_data_loader)))
+    print("===> Avg. PSNR: {:.4f} dB".format(ssim_test / len(testing_data_loader)))
     return psnr_test / len(testing_data_loader)
 
 

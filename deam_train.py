@@ -11,6 +11,7 @@ from torch.autograd import Variable
 from torch.utils.data import DataLoader
 from model import Deam
 from data import get_training_set, get_eval_set
+import matplotlib.pyplot as plt
 # from skimage.measure.simple_metrics import compare_psnr
 from skimage.metrics import structural_similarity as compare_ssim
 from skimage.metrics import peak_signal_noise_ratio as compare_psnr
@@ -101,11 +102,29 @@ def batch_PSNR(img, imclean, data_range):
     PSNR = 0
     for i in range(Img.shape[0]):
         PSNR += compare_psnr(Iclean[i, :, :, :], Img[i, :, :, :], data_range=data_range)
+        ceshi = Iclean[i, :, :, :]
+        ceshi2 = Img[i, :, :, :]
+        # ceshi3 = Iclean[:, :]
+
+        Iclean2 = ceshi[:, :, ::-1].transpose((1, 2, 0))
+        Img2 = ceshi2[:, :, ::-1].transpose((1, 2, 0))
+        # img2 = np.resize(img2, (img1.shape[0], img1.shape[1], img1.shape[2]))
+        ce = ceshi[0]
+        ce2 = ceshi2[0]
+        show(np.hstack((Iclean2[:, :, 0], Img2[:, :, 0])))  # 去噪图片，噪声图片
     return (PSNR / Img.shape[0])
 
+def show(x, title=None, cbar=False, figsize=None):
+    plt.figure(figsize=figsize)
 
+    plt.imshow(x, cmap="gray")  # #interpolation 插值方法  #cmap: 颜色图谱（colormap), 默认绘制为RGB(A)颜色空间
+    if title:
+        plt.title(title)
+    if cbar:
+        plt.colorbar()
+    plt.show()  # 输出图片
 def test(testing_data_loader):
-    psnr_test= 0
+    psnr_test = 0
     model.eval()
     for batch in testing_data_loader:
         target = Variable(batch[0])

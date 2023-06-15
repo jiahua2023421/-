@@ -5,7 +5,463 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fcf5cd65-6650-4f6d-bc5d-3a3b87d14f04" name="更改" comment="真实噪声训练">
+      <change afterPath="$PROJECT_DIR$/data/Benchmark_test/clean/GT_SRGB_010.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/Benchmark_test/noise/NOISY_SRGB_010.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/NOISY_SRGB_010.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor100.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor101.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor102.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor103.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor104.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor105.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor106.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor107.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor108.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor109.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor110.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor111.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor112.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor113.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor114.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor115.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor116.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor117.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor118.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor119.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor12.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor120.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor121.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor122.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor123.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor124.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor125.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor126.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor127.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor128.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor129.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor130.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor131.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor132.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor133.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor134.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor135.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor136.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor137.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor138.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor139.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor14.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor140.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor141.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor142.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor143.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor144.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor145.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor146.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor147.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor148.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor149.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor15.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor150.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor151.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor152.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor153.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor154.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor155.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor156.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor157.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor158.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor159.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor16.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor160.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor161.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor162.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor163.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor164.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor165.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor166.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor167.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor168.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor169.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor17.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor170.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor171.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor172.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor173.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor174.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor175.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor176.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor177.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor178.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor179.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor18.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor180.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor181.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor182.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor183.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor184.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor185.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor186.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor187.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor188.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor189.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor19.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor190.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor191.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor192.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor193.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor194.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor195.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor196.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor197.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor198.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor199.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor20.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor200.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor201.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor202.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor203.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor204.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor205.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor206.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor207.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor208.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor209.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor21.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor210.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor211.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor212.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor213.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor214.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor215.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor216.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor217.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor218.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor219.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor22.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor23.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor24.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor25.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor26.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor27.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor28.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor29.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor30.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor31.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor33.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor34.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor35.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor36.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor37.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor38.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor39.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor40.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor41.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor42.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor43.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor44.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor45.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor46.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor47.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor48.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor49.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor50.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor51.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor52.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor53.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor54.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor55.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor56.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor57.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor58.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor59.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor60.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor61.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor62.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor63.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor64.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor65.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor66.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor67.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor68.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor69.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor70.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor71.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor72.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor73.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor74.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor75.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor76.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor77.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor78.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor79.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor80.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor81.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor82.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor83.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor84.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor85.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor86.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor87.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor88.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor89.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor90.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor91.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor92.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor93.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor94.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor95.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor96.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor97.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor98.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/noise/thor99.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor100.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor101.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor102.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor103.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor104.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor105.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor106.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor107.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor108.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor109.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor110.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor111.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor112.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor113.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor114.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor115.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor116.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor117.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor118.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor119.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor12.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor120.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor121.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor122.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor123.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor124.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor125.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor126.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor127.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor128.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor129.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor130.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor131.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor132.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor133.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor134.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor135.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor136.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor137.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor138.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor139.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor14.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor140.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor141.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor142.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor143.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor144.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor145.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor146.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor147.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor148.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor149.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor15.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor150.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor151.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor152.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor153.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor154.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor155.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor156.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor157.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor158.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor159.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor16.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor160.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor161.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor162.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor163.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor164.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor165.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor166.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor167.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor168.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor169.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor17.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor170.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor171.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor172.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor173.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor174.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor175.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor176.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor177.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor178.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor179.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor18.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor180.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor181.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor182.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor183.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor184.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor185.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor186.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor187.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor188.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor189.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor19.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor190.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor191.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor192.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor193.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor194.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor195.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor196.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor197.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor198.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor199.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor20.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor200.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor201.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor202.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor203.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor204.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor205.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor206.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor207.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor208.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor209.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor21.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor210.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor211.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor212.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor213.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor214.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor215.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor216.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor217.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor218.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor219.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor22.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor23.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor24.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor25.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor26.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor27.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor28.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor29.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor30.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor31.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor33.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor34.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor35.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor36.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor37.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor38.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor39.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor40.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor41.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor42.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor43.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor44.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor45.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor46.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor47.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor48.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor49.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor50.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor51.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor52.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor53.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor54.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor55.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor56.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor57.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor58.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor59.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor60.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor61.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor62.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor63.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor64.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor65.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor66.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor67.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor68.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor69.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor70.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor71.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor72.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor73.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor74.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor75.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor76.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor77.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor78.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor79.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor80.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor81.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor82.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor83.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor84.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor85.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor86.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor87.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor88.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor89.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor90.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor91.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor92.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor93.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor94.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor95.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor96.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor97.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor98.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/result/thor99.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cut/thor.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deam_results/real/results.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scratch_3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SIDD_denoise.py" beforeDir="false" afterPath="$PROJECT_DIR$/SIDD_denoise.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Benchmark_test/readme.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/SIDD_RENOIR_h5/train.h5" beforeDir="false" afterPath="$PROJECT_DIR$/data/SIDD_RENOIR_h5/train.h5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deam_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/deam_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deam_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/deam_train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deam_train_model/model_001.pth" beforeDir="false" afterPath="$PROJECT_DIR$/deam_train_model/model_001.pth" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dncnn_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/dncnn_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/real_model/model_001.pth" beforeDir="false" afterPath="$PROJECT_DIR$/real_model/model_001.pth" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/real_noise_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/real_noise_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/real_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/real_train.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/statistics/training_logs.csv" beforeDir="false" afterPath="$PROJECT_DIR$/statistics/training_logs.csv" afterDir="false" />
     </list>
@@ -28,28 +484,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/张家华/PycharmProjects/dncnn",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/张家华/PycharmProjects/dncnn&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/新建临时文件": [
-      "Python"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/新建临时文件&quot;: [
+      &quot;Python&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\张家华\PycharmProjects\-" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.real_train">
+  <component name="RunManager" selected="Python.real_noise_test (1)">
     <configuration name="deam_train" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="-" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -92,7 +548,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="gen_dataset_real" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="real_noise_test (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="-" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -104,28 +560,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/gen_dataset_real.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="real_noise_test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="-" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\张家华\PycharmProjects\dncnn\real_noise_test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/real_noise_test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -155,13 +590,34 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="scratch_3" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="-" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scratch_3.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.real_train" />
+        <item itemvalue="Python.real_noise_test (1)" />
         <item itemvalue="Python.dncnn_test" />
-        <item itemvalue="Python.gen_dataset_real" />
+        <item itemvalue="Python.scratch_3" />
+        <item itemvalue="Python.real_train" />
         <item itemvalue="Python.deam_train" />
-        <item itemvalue="Python.real_noise_test" />
       </list>
     </recent_temporary>
   </component>
@@ -349,7 +805,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686562872505</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="真实噪声训练">
+      <created>1686577235946</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1686577235946</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -381,5 +844,21 @@
     <MESSAGE value="真实噪声测试" />
     <MESSAGE value="真实噪声训练" />
     <option name="LAST_COMMIT_MESSAGE" value="真实噪声训练" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/SIDD_denoise.py</url>
+          <line>75</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/dncnn_test.py</url>
+          <line>120</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

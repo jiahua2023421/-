@@ -116,6 +116,8 @@ if __name__ == '__main__':
         # ceshi = os.path.join(args.result_dir, 'sigma50', set_cur)
         public.path_creat(os.path.join(args.result_dir, 'sigma'+str(args.sigma), set_cur))
         # ceshi = 'sigma'+str(args.sigma)
+        ceshi = np.hstack((psnrs, ssims))
+        ceshi1 = os.path.join(args.result_dir, 'sigma'+str(args.sigma), set_cur, 'results.txt')
         save_result(np.hstack((psnrs, ssims)), path=os.path.join(args.result_dir, 'sigma'+str(args.sigma), set_cur, 'results.txt'))
         # 以文本形式 保存每一张图片的PSNR与SSIM结果
         log('Datset: {0:10s} \n  PSNR = {1:2.2f}dB, SSIM = {2:1.4f}'.format(set_cur, psnr_avg, ssim_avg))
