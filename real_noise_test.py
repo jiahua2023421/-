@@ -2,7 +2,6 @@ import os
 import math
 import SIDD_denoise
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
-from skimage import img_as_ubyte
 import torch
 from skimage.metrics import structural_similarity as compare_ssim
 from skimage.metrics import peak_signal_noise_ratio as compare_psnr
@@ -10,32 +9,21 @@ import matplotlib.pyplot as plt
 from model import Deam
 import os
 import argparse
-import time
 import numpy as np
 import public
-from PIL import Image
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"] = "0,1"
 parser = argparse.ArgumentParser()
-parser.add_argument('--pretrained', type=str, default='./Deam_models/', help="Checkpoints directory,  (default:./checkpoints)")
-parser.add_argument('--Isreal', default=True, help='Location to save checkpoint models')
-parser.add_argument('--data_folder', type=str, default='./data/Benchmark_test', help='Location to save checkpoint models')
-parser.add_argument('--out_folder', type=str, default='./Dnd_result', help='Location to save checkpoint models')
-parser.add_argument('--model', type=str, default='Real.pth', help='Location to save checkpoint models')
-parser.add_argument('--Type', type=str, default='SIDD', help='To choose the testing benchmark dataset, SIDD or Dnd')
+parser.add_argument('--pretrained', type=str, default='./Deam_models/', help="Checkpoints directory,  (default:./checkpoints)")  #
+parser.add_argument('--model', type=str, default='Real.pth', help='Location to save checkpoint models')  #
 parser.add_argument('--result_dir', default='deam_results/real', type=str, help='directory of test dataset')  # 测试结果目录
 args = parser.parse_args()
 use_gpu = True
-
 print('Loading the Model')
-net = Deam(args.Isreal)
+net = Deam(True)
 checkpoint = torch.load(os.path.join(args.pretrained, args.model))
 model = torch.nn.DataParallel(net).cuda()
 model.eval()
-
-def normalize(data):
-    return data/255.
-
 def qiepian():
     import cv2
     img = cv2.imread("./data/cut/NOISY_SRGB_010.png")
@@ -47,28 +35,10 @@ def qiepian():
             lujing = './data/cut/noise/thor' + str(ii) + '.png'
             cv2.imwrite(lujing, cropped)
             ii += 1
-def denoise(model, noisy_image, list):
+def denoise(model, noisy_image):
     with torch.autograd.set_grad_enabled(False):
         torch.cuda.synchronize()
-        # torch.synchronize()
         phi_Z = model(noisy_image)
-        # psnr_test = batch_PSNR(phi_Z, noisy_image, 1.)  #计算两张图片的PSNR
-        # print("===> Avg. PSNR: {:.4f} dB".format(psnr_test))
-        # Img = noisy_image.data.cpu().numpy().astype(np.float32)
-        # Iclean = phi_Z.data.cpu().numpy().astype(np.float32)
-        Img = noisy_image.data.cpu().numpy().astype(np.float32)
-        Iclean = phi_Z.data.cpu().numpy().astype(np.float32)
-        ceshi = Iclean[0, :, :, :]
-        ceshi2 = Img[0, :, :, :]
-        Iclean2 = ceshi[:, :, ::-1].transpose((1, 2, 0))
-        Img2 = ceshi2[:, :, ::-1].transpose((1, 2, 0))
-        # show(np.hstack((Iclean2, Img2)))  # 显示图片
-        # save_result(Iclean2, './real_result/denoise', list)
-        torch.cuda.synchronize()
-        im_denoise = phi_Z.cpu().numpy()   # ndarray 1 3 256 256
-    im_denoise = np.transpose(im_denoise.squeeze(), (1, 2, 0))  # ndarray 256 256 3
-    im_denoise = img_as_ubyte(im_denoise.clip(0, 1))
-
     return phi_Z
 
 
@@ -111,22 +81,16 @@ def show(x, title=None, cbar=False, figsize=None):
     plt.show()  # 输出图片
 def main():
     use_gpu = True
-    # load the pretrained model
     print('Loading the Model')
-    # args = parse_benchmark_processing_arguments()
-    # checkpoint = torch.load(os.path.join(args.pretrained, args.model))
-    net = Deam(args.Isreal)
+    net = Deam(True)
     if use_gpu:
         net = torch.nn.DataParallel(net).cuda()
         net.load_state_dict(checkpoint)
     net.eval()
-
-    files_path = './data/cut/noise'
-    test_path = './data/cut/result'
+    files_path = './data/cut/noise'  # 噪声图片路径
+    test_path = './data/cut/result'  # 无噪声图，计算SSIM和PSNR
     files_source = os.listdir(files_path)
     test_source = os.listdir(test_path)
-    psnr_test = 0
-    i = 1
     psnrs = []  # 计算psnr与ssim的数组
     ssims = []
     i2 = 0
@@ -139,16 +103,16 @@ def main():
         torch.cuda.manual_seed(SEED)
         image_path = os.path.join(files_path, f)
         clean_path = os.path.join(test_path, g)
-        noisy_image = plt.imread(image_path)
+        noisy_image = plt.imread(image_path)  # 读彩色图片， 256 256 3 数组
         clean_image = plt.imread(clean_path)
-        noisy_image = torch.from_numpy(noisy_image.transpose((2, 0, 1))[np.newaxis, ])
+        noisy_image = torch.from_numpy(noisy_image.transpose((2, 0, 1))[np.newaxis, ])  # 转为张量 1 3 256 256
         clean_image = torch.from_numpy(clean_image.transpose((2, 0, 1))[np.newaxis, ])
-        poseSmile_cell = denoise(net, noisy_image, i2)
-        c = tensor_ndarray(clean_image)
+        poseSmile_cell = denoise(net, noisy_image)  # 返回张量 1 3 256 256
+        c = tensor_ndarray(clean_image)  # 张量转数组
         p = tensor_ndarray(poseSmile_cell)
         n = tensor_ndarray(noisy_image)
         # show(np.hstack((c, p, n)))  # 显示图片结果
-        psnr, ssim = batch_PSNR(clean_image, poseSmile_cell, 1.)
+        psnr, ssim = batch_PSNR(clean_image, poseSmile_cell, 1.)  # 计算单个图片，输入为张量
         psnrs.append(psnr)
         ssims.append(ssim)
         ceshi = psnrs[i2]
@@ -162,9 +126,8 @@ def main():
     print("平均SSIM{:.4f}".format(SSIM / len(files_source)))
     public.path_creat(args.result_dir)
     save_result1(np.hstack((PSNR/len(files_source), SSIM / len(files_source))),
-                path='deam_results/real/results.txt')
-    # 以文本形式 保存每一张图片的PSNR与SSIM结果
-    # log('Datset: {0:10s} \n  PSNR = {1:2.2f}dB, SSIM = {2:1.4f}'.format(set_cur, psnr_avg, ssim_avg))
+                path='deam_results/real/results.txt')   # 保存平均值
+
 def save_result1(result, path):
     np.savetxt(path, result, fmt='%2.4f')  # 保存为txt文件，数据按%2.4f格式写入
 
