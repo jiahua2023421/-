@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcf5cd65-6650-4f6d-bc5d-3a3b87d14f04" name="更改" comment="deamnet测试训练功能优化" />
+    <list default="true" id="fcf5cd65-6650-4f6d-bc5d-3a3b87d14f04" name="更改" comment="deamnet测试训练功能优化">
+      <change afterPath="$PROJECT_DIR$/deam_results/real/results3.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deam_results/real/results4.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/real_model/Real.pth" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/real_model/Real2.pth" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/real_model/Real3.pth" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/real_model/Real4.pth" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deam_results/real/results.txt" beforeDir="false" afterPath="$PROJECT_DIR$/deam_results/real/results.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/real_model/model_001.pth" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/real_noise_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/real_noise_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/real_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/real_train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistics/training_logs.csv" beforeDir="false" afterPath="$PROJECT_DIR$/statistics/training_logs.csv" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,7 +58,7 @@
       <recent name="C:\Users\张家华\PycharmProjects\-" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.real_train">
+  <component name="RunManager" selected="Python.real_noise_test (1)">
     <configuration name="dncnn_test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="-" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -153,11 +166,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.real_train" />
-        <item itemvalue="Python.dncnn_train" />
         <item itemvalue="Python.real_noise_test (1)" />
-        <item itemvalue="Python.dncnn_test" />
+        <item itemvalue="Python.real_train" />
         <item itemvalue="Python.scratch_3" />
+        <item itemvalue="Python.dncnn_train" />
+        <item itemvalue="Python.dncnn_test" />
       </list>
     </recent_temporary>
   </component>
@@ -373,7 +386,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686823123010</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="deamnet测试训练功能优化">
+      <created>1686828442054</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1686828442054</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

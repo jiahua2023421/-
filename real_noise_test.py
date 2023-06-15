@@ -14,8 +14,10 @@ import public
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"] = "0,1"
 parser = argparse.ArgumentParser()
-parser.add_argument('--pretrained', type=str, default='./Deam_models/', help="Checkpoints directory,  (default:./checkpoints)")  #
-parser.add_argument('--model', type=str, default='Real.pth', help='Location to save checkpoint models')  #
+# parser.add_argument('--pretrained', type=str, default='./Deam_models/', help="Checkpoints directory,  (default:./checkpoints)")  #
+parser.add_argument('--pretrained', type=str, default='./real_model/', help="Checkpoints directory,  (default:./checkpoints)")  #
+parser.add_argument('--model', type=str, default='Real3.pth', help='Location to save checkpoint models')  #
+# parser.add_argument('--model', type=str, default='model_001.pth', help='Location to save checkpoint models')  #
 parser.add_argument('--result_dir', default='deam_results/real', type=str, help='directory of test dataset')  # 测试结果目录
 args = parser.parse_args()
 use_gpu = True
@@ -108,7 +110,7 @@ def main():
         noisy_image = torch.from_numpy(noisy_image.transpose((2, 0, 1))[np.newaxis, ])  # 转为张量 1 3 256 256
         clean_image = torch.from_numpy(clean_image.transpose((2, 0, 1))[np.newaxis, ])
         poseSmile_cell = denoise(net, noisy_image)  # 返回张量 1 3 256 256
-        c = tensor_ndarray(clean_image)  # 张量转数组
+        c = tensor_ndarray(clean_image)  # 张 量 转数组
         p = tensor_ndarray(poseSmile_cell)
         n = tensor_ndarray(noisy_image)
         # show(np.hstack((c, p, n)))  # 显示图片结果
@@ -124,9 +126,11 @@ def main():
         i2 += 1
     print("平均PSNR{:.4f}".format(PSNR/len(files_source)))
     print("平均SSIM{:.4f}".format(SSIM / len(files_source)))
+    psnrs.append(PSNR/len(files_source))
+    ssims.append(SSIM / len(files_source))
     public.path_creat(args.result_dir)
-    save_result1(np.hstack((PSNR/len(files_source), SSIM / len(files_source))),
-                path='deam_results/real/results.txt')   # 保存平均值
+    save_result1(np.hstack((psnrs, ssims)),
+                path='deam_results/real/results3.txt')   # 保存平均值
 
 def save_result1(result, path):
     np.savetxt(path, result, fmt='%2.4f')  # 保存为txt文件，数据按%2.4f格式写入

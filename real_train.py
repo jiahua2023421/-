@@ -25,7 +25,7 @@ parser.add_argument('--start_iter', type=int, default=1, help='starting epoch') 
 parser.add_argument('--lr', type=float, default=0.0001, help='learning rate. default=0.0001')  #
 
 
-parser.add_argument('--Ispretrained', type=bool, default=True, help='If load checkpoint model')  #
+parser.add_argument('--Ispretrained', type=bool, default=False, help='If load checkpoint model')  #
 parser.add_argument('--pretrained_sr', default='Real.pth', help='sr pretrained base model')  #
 parser.add_argument('--pretrained', default='./Deam_models', help='Location to load checkpoint models')  #
 parser.add_argument('--save_folder', default='./real_model/', help='Location to save checkpoint models')  #
@@ -57,6 +57,7 @@ def train(epoch):
     for iteration, batch in enumerate(training_data_loader, 1):
         target = Variable(batch[1])  # 0 噪声   1 干净
         input = Variable(batch[0])  # 输入为噪声图片
+        zaosheng = Variable(batch[0]) - Variable(batch[1])  # 噪声 - 干净
         input = input.cuda()
         target = target.cuda()
         model.zero_grad()
@@ -65,9 +66,22 @@ def train(epoch):
 
         prediction = model(input)
 
-        # Corresponds to the Optimized Scheme
-        loss = criterion(prediction, target)/(input.size()[0]*2)
+        fankui = input - prediction  # 噪声 - 预测
 
+        # Corresponds to the Optimized Scheme
+        loss = criterion(fankui, zaosheng.cuda())/(input.size()[0]*2)
+        # target = Variable(batch[1])  # 0 噪声   1 干净
+        # input = Variable(batch[0])  # 输入为噪声图片
+        # input = input.cuda()
+        # target = target.cuda()
+        # model.zero_grad()
+        # optimizer.zero_grad()
+        # t0 = time.time()
+        #
+        # prediction = model(input)
+        #
+        # # Corresponds to the Optimized Scheme
+        # loss = criterion(prediction, target) / (input.size()[0] * 2)
         t1 = time.time()
         epoch_loss += loss.data
         loss.backward()
@@ -80,7 +94,11 @@ def train(epoch):
     print("===> Epoch {} Complete: Avg. Loss: {:.4f}".format(epoch, epoch_loss / len(training_data_loader)))
     if not os.path.exists(opt.save_folder):  # 结果路径
         os.mkdir(opt.save_folder)  # 创造目录
-    torch.save(model, os.path.join(opt.save_folder, 'model_%03d.pth' % (epoch)))  # 保存模型
+    model.eval()
+    # SC = 'net_epoch_' + str(epoch) + '_' + str(iteration + 1) + '.pth'
+    # torch.save(model.state_dict(), os.path.join(opt.save_folder, SC))
+    # model.train()
+    torch.save(model.state_dict(), os.path.join(opt.save_folder, 'Real4.pth' ))  # 保存模型
 
 def tensor_ndarray(data):
     data1 = data.data.cpu().numpy().astype(np.float32)
