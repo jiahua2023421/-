@@ -1,34 +1,32 @@
 # 官方库
 import torch, os, time
+
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 import numpy as np
 from imageio import imread
 from skimage.metrics import structural_similarity as compare_ssim
 from skimage.metrics import peak_signal_noise_ratio as compare_psnr
- # 私人库
+# 私人库
 
 from public import parse_args, log
 from data_process import show, save_result
 from model import DnCNN
 
-
-
 if __name__ == '__main__':
     # 参数
-    args = parse_args(1)  #测试集
+    args = parse_args(1)  # 测试集
 
     # model = DnCNN()
     if not os.path.exists(os.path.join(args.model_dir, args.model_name)):  # model_001若不存在，则加载model
-
         model_cpu = torch.load(os.path.join(args.model_dir, 'model.pth'), map_location='cpu')  # 映射到CPU，此模型不会被加载到cuda
         model = torch.load(os.path.join(args.model_dir, 'model.pth'), map_location='cpu')  # 映射到CPU
         # load weights into new model
-        log('load trained model on Train400 dataset by kai')  #张凯的模型
+        log('load trained model on Train400 dataset by kai')  # 张凯的模型
     else:
         # model.load_state_dict(torch.load(os.path.join(args.model_dir, args.model_name)))
         model_cpu = torch.load(os.path.join(args.model_dir, args.model_name), map_location='cpu')
         model = torch.load(os.path.join(args.model_dir, args.model_name), map_location='cpu')
-        log('load trained model')   #本地训练的模型
+        log('load trained model')  # 本地训练的模型
 
     #    params = model.state_dict()
     #    print(params.values())
@@ -100,5 +98,5 @@ if __name__ == '__main__':
         psnrs.append(psnr_avg)
         ssims.append(ssim_avg)
         if args.save_result:
-         save_result(np.hstack((psnrs, ssims)), path=os.path.join(args.result_dir, set_cur, 'results.txt'))
+            save_result(np.hstack((psnrs, ssims)), path=os.path.join(args.result_dir, set_cur, 'results.txt'))
         log('Datset: {0:10s} \n  PSNR = {1:2.2f}dB, SSIM = {2:1.4f}'.format(set_cur, psnr_avg, ssim_avg))
