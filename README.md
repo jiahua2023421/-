@@ -49,6 +49,10 @@ model.py
 ### 模型名称    sigma    数据集     PSNR         SSIM
 ### dncnn     25     Set12   27.6433     0.8241
 ### dncnn     25     Set68   23.7726     0.6610
+### dncnn     15     Set12   28.1976     0.8178
+### dncnn     15     Set68   21.4183     0.5423
+### dncnn     50     Set12   24.9443     0.7565
+### dncnn     50     Set68   23.7206     0.6590
 ### deamnet   15     Set12   33.1894     0.9575
 ### deamnet   15     Set68   31.9055     0.9433
 ### deamnet   25     Set12   30.8141     0.9353
