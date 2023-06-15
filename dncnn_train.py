@@ -1,32 +1,16 @@
 # 官方库
 from __future__ import print_function
-
 import os
-import torch
 import time
-import torch.optim as optim
-import numpy as np
 from torch.optim.lr_scheduler import MultiStepLR
-from torch.utils.data import DataLoader
 # 私人库
-from model import DnCNN, ADNet, Deam
+from model import DnCNN
 from public import findLastCheckpoint,  sum_squared_error, log
 import data_process as dp
 from data_process import DenoisingDataset
-
-import socket
-import pandas as pd
 import argparse
-import torch.nn as nn
 import torch.optim as optim
-import torch.backends.cudnn as cudnn
-from torch.autograd import Variable
 from torch.utils.data import DataLoader
-
-from data import get_training_set, get_eval_set
-
-from skimage.metrics import structural_similarity as compare_ssim
-from skimage.metrics import peak_signal_noise_ratio as compare_psnr
 from real_dataloader import *
 
 parser = argparse.ArgumentParser(description='PyTorch DnCNN')#创建训练解析器
@@ -34,7 +18,7 @@ parser.add_argument('--model', default='DnCNN', type=str, help='choose a type of
 parser.add_argument('--batch_size', default=64, type=int, help='batch size')#批量大小  整型   默认大小128
 parser.add_argument('--train_data', default='data/Train400', type=str, help='path of train data')#训练数据  字符串型  默认 data/Train400  路径
 parser.add_argument('--sigma', default=50, type=int, help='noise level')#噪声水平 整型 默认25
-parser.add_argument('--epoch', default=1, type=int, help='number of train epoches')#epoch 整型  默认180
+parser.add_argument('--epoch', default=2, type=int, help='number of train epoches')#epoch 整型  默认180
 parser.add_argument('--lr', default=1e-3, type=float, help='initial learning rate for Adam')#学习率  float 0.001  adam优化算法
 args = parser.parse_args()
 
@@ -83,7 +67,7 @@ if __name__ == '__main__':
         xs = dp.datagenerator(data_dir=args.train_data)   # 路径名 生成多批次的数据集
         xs = xs.astype('float32') / 255.0  # 数组转为float32 , 归一化
         xs = torch.from_numpy(xs.transpose((0, 3, 1, 2)))  # tensor of the clean patches, NXCXHXW
-        # 变为张量， 238336 ， 1， 40 ， 40
+        # 变为 张 量， 238336 ， 1， 40 ， 40
         DDataset = DenoisingDataset(xs, sigma)    # 返回batch_y, batch_x
         # 加噪声
         # 238336 / batch_size
@@ -108,28 +92,22 @@ if __name__ == '__main__':
             epoch_loss += loss.item()
 # .item()方法是，取一个元素张量里面的具体元素值并返回该值，可以将一个零维张量转换成int型或者float型，在计算loss，accuracy时常用到。
 # 作用：
-# 1.item（）取出张量具体位置的元素元素值
+# 1.item（）取出 张 量 具体位置的元素元素值
 # 2.并且返回的是该位置元素值的高精度值
 # 3.保持原元素类型不变；必须指定位置
 # 4.节省内存（不会计入计算图）
-
-
             loss.backward()  # 反向传播，计算当前梯度
             optimizer.step()  # 根据梯度更新网络参数
-
             ceshi1 = xs.size(0)
             ceshi = xs.size(0) // batch_size
             if n_count % 10 == 0:  # 每循环10遍，输出一次结果
                 print('%4d %4d / %4d loss = %2.4f' % (
                 epoch + 1, n_count, xs.size(0) // batch_size, loss.item() / batch_size))
         elapsed_time = time.time() - start_time  # 结束时间
-
         log('epcoh = %4d , loss = %4.4f , time = %4.2f s' % (epoch + 1, epoch_loss / n_count, elapsed_time))
         np.savetxt('train_result.txt', np.hstack((epoch + 1, epoch_loss / n_count, elapsed_time)), fmt='%2.4f')
         # 保存
         torch.save(model, os.path.join(save_dir, 'model_%03d.pth' % (epoch+1)))  # 保存模型
-    # torch.save(model, os.path.join(save_dir, 'model_001.pth'))
-    # torch.save(model, os.path.join(save_dir, 'model_%03d.pth' % (epoch + 1)))
 
 
 

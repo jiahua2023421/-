@@ -1,14 +1,7 @@
-# 官方库
 from __future__ import print_function
-
 import os
-
 import time
-
-# 私人库
 from model import Deam
-
-
 import socket
 import pandas as pd
 import argparse
@@ -17,47 +10,35 @@ import torch.optim as optim
 import torch.backends.cudnn as cudnn
 from torch.autograd import Variable
 from torch.utils.data import DataLoader
-
-from data import get_training_set, get_eval_set
-
 from skimage.metrics import structural_similarity as compare_ssim
 from skimage.metrics import peak_signal_noise_ratio as compare_psnr
 from real_dataloader import *
-
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"] = "0,1"
 
-# Training settings
 parser = argparse.ArgumentParser(description='PyTorch Super Res Example')
+parser.add_argument('--batch_size', type=int, default=2, help='training batch size')  #
 
-parser.add_argument('--batch_size', type=int, default=2, help='training batch size')
-parser.add_argument('--upscale_factor', type=int, default=1, help="super resolution upscale factor")
-parser.add_argument('--batchSize', type=int, default=2, help='training batch size')
-parser.add_argument('--nEpochs', type=int, default=1, help='number of epochs to train for')
-parser.add_argument('--start_iter', type=int, default=1, help='starting epoch')
-parser.add_argument('--lr', type=float, default=0.0001, help='learning rate. default=0.0001')
-parser.add_argument('--data_augmentation', type=bool, default=True, help='if adopt augmentation when training')
-parser.add_argument('--hr_train_dataset', type=str, default='', help='the training dataset')
-parser.add_argument('--Ispretrained', type=bool, default=True, help='If load checkpoint model')
-parser.add_argument('--pretrained_sr', default='Real.pth', help='sr pretrained base model')
-parser.add_argument('--pretrained', default='./Deam_models', help='Location to load checkpoint models')
 
-parser.add_argument('--save_folder', default='./real_model/', help='Location to save checkpoint models')
-parser.add_argument('--statistics', default='./statistics/', help='Location to save statistics')
-parser.add_argument('--epoch', default=180, type=int, help='number of train epoches')#epoch 整型  默认180
+parser.add_argument('--nEpochs', type=int, default=1, help='number of epochs to train for')  #
+parser.add_argument('--start_iter', type=int, default=1, help='starting epoch')  #
+parser.add_argument('--lr', type=float, default=0.0001, help='learning rate. default=0.0001')  #
+
+
+parser.add_argument('--Ispretrained', type=bool, default=True, help='If load checkpoint model')  #
+parser.add_argument('--pretrained_sr', default='Real.pth', help='sr pretrained base model')  #
+parser.add_argument('--pretrained', default='./Deam_models', help='Location to load checkpoint models')  #
+parser.add_argument('--save_folder', default='./real_model/', help='Location to save checkpoint models')  #
+parser.add_argument('--statistics', default='./statistics/', help='Location to save statistics')  #
+
 # Testing settings
-parser.add_argument('--testBatchSize', type=int, default=1, help='testing batch size, default=1')
-parser.add_argument('--seed', type=int, default=123, help='random seed to use. Default=123')
-parser.add_argument('--test_dataset', type=str, default='Set12', help='the testing dataset')
-parser.add_argument("--val_noiseL", type=float, default=25, help='noise level used on validation set')
+parser.add_argument('--testBatchSize', type=int, default=1, help='testing batch size, default=1')  #
 
-# Global settings
-parser.add_argument('--threads', type=int, default=4, help='number of threads for data loader to use')
-parser.add_argument('--gpus', default=1, type=int, help='number of gpus')
-parser.add_argument('--data_dir', type=str, default='./data', help='the dataset dir')
-parser.add_argument('--model_type', type=str, default='Deam', help='the name of model')
-parser.add_argument('--patch_size', type=int, default=128, help='Size of cropped HR image')
-parser.add_argument('--Isreal', default=True, help='If training/testing on RGB images')
+parser.add_argument('--gpus', default=1, type=int, help='number of gpus')  #
+parser.add_argument('--data_dir', type=str, default='./data', help='the dataset dir')  #
+parser.add_argument('--model_type', type=str, default='Deam', help='the name of model')  #
+parser.add_argument('--patch_size', type=int, default=128, help='Size of cropped HR image')  #
+parser.add_argument('--Isreal', default=True, help='If training/testing on RGB images')  #
 
 
 opt = parser.parse_args()
@@ -94,8 +75,6 @@ def train(epoch):
 
         if (iteration+1) % 50 == 0:
             model.eval()
-            SC = 'net_epoch_' + str(epoch) + '_' + str(iteration + 1) + '.pth'
-            # torch.save(model.state_dict(), os.path.join(opt.save_folder, SC))
             model.train()
         print("===> Epoch[{}]({}/{}): Loss: {:.4f} || Timer: {:.4f} sec.".format(epoch, iteration, len(training_data_loader), loss.data, (t1 - t0)))
     print("===> Epoch {} Complete: Avg. Loss: {:.4f}".format(epoch, epoch_loss / len(training_data_loader)))
@@ -155,7 +134,7 @@ def test(testing_data_loader):
         p = tensor_ndarray(prediction)
         i = tensor_ndarray(input)
         t = tensor_ndarray(target)
-        show(np.hstack((p, i, t)))
+        # show(np.hstack((p, i, t)))
         psnr, ssim = batch_PSNR(prediction, target, 1.)
         psnr_test += psnr
         ssim_test += ssim
@@ -181,20 +160,14 @@ def checkpoint(epoch,psnr):
 if __name__ == '__main__':
     print('===> Loading datasets')
 
-    if opt.Isreal:
-        train_set = Dataset_h5_real(src_path=os.path.join(opt.data_dir, 'train', 'train.h5'), patch_size=opt.patch_size, train=True)
-        training_data_loader = DataLoader(dataset=train_set, batch_size=opt.batch_size, shuffle=True, num_workers=4,
-                                drop_last=True)
-        test_set = Dataset_h5_real(src_path=os.path.join(opt.data_dir, 'test', 'val.h5'), patch_size=opt.patch_size, train=False)
-        testing_data_loader = DataLoader(dataset=test_set, batch_size=opt.testBatchSize, shuffle=False, num_workers=0, drop_last=True)
-        print('ceshi')
-    else:
-        train_set = get_training_set(os.path.join(opt.data_dir, 'Train400'), opt.hr_train_dataset, opt.upscale_factor,
-                                     opt.patch_size, opt.data_augmentation)
-        training_data_loader = DataLoader(dataset=train_set, num_workers=opt.threads, batch_size=opt.batchSize, shuffle=True)
 
-        test_set = get_eval_set(os.path.join(opt.data_dir+'/Test', opt.test_dataset), opt.upscale_factor)
-        testing_data_loader = DataLoader(dataset=test_set, num_workers=opt.threads, batch_size=opt.testBatchSize, shuffle=False)
+    train_set = Dataset_h5_real(src_path=os.path.join(opt.data_dir, 'train', 'train.h5'), patch_size=opt.patch_size, train=True)
+    training_data_loader = DataLoader(dataset=train_set, batch_size=opt.batch_size, shuffle=True, num_workers=4,
+                                drop_last=True)
+    test_set = Dataset_h5_real(src_path=os.path.join(opt.data_dir, 'test', 'val.h5'), patch_size=opt.patch_size, train=False)
+    testing_data_loader = DataLoader(dataset=test_set, batch_size=opt.testBatchSize, shuffle=False, num_workers=0, drop_last=True)
+    print('ceshi')
+
 
     print('===> Building model ', opt.model_type)
     model = Deam(opt.Isreal)
