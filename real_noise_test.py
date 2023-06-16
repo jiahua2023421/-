@@ -16,7 +16,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "0,1"
 parser = argparse.ArgumentParser()
 # parser.add_argument('--pretrained', type=str, default='./Deam_models/', help="Checkpoints directory,  (default:./checkpoints)")  #
 parser.add_argument('--pretrained', type=str, default='./real_model/', help="Checkpoints directory,  (default:./checkpoints)")  #
-parser.add_argument('--model', type=str, default='Real3.pth', help='Location to save checkpoint models')  #
+parser.add_argument('--model', type=str, default='Real6.pth', help='Location to save checkpoint models')  #
 # parser.add_argument('--model', type=str, default='model_001.pth', help='Location to save checkpoint models')  #
 parser.add_argument('--result_dir', default='deam_results/real', type=str, help='directory of test dataset')  # 测试结果目录
 args = parser.parse_args()
@@ -41,6 +41,7 @@ def denoise(model, noisy_image):
     with torch.autograd.set_grad_enabled(False):
         torch.cuda.synchronize()
         phi_Z = model(noisy_image)
+        phi_Z = noisy_image.cuda() - phi_Z
     return phi_Z
 
 
@@ -130,7 +131,7 @@ def main():
     ssims.append(SSIM / len(files_source))
     public.path_creat(args.result_dir)
     save_result1(np.hstack((psnrs, ssims)),
-                path='deam_results/real/results3.txt')   # 保存平均值
+                path='deam_results/real/result6.txt')   # 保存平均值
 
 def save_result1(result, path):
     np.savetxt(path, result, fmt='%2.4f')  # 保存为txt文件，数据按%2.4f格式写入

@@ -55,6 +55,21 @@ def train(epoch):
     epoch_loss = 0
     model.train()
     for iteration, batch in enumerate(training_data_loader, 1):
+        # target = Variable(batch[1])  # 0 噪声   1 干净
+        # input = Variable(batch[0])  # 输入为噪声图片
+        # zaosheng = Variable(batch[0]) - Variable(batch[1])  # 噪声 - 干净
+        # input = input.cuda()
+        # target = target.cuda()
+        # model.zero_grad()
+        # optimizer.zero_grad()
+        # t0 = time.time()
+        #
+        # prediction = model(input)
+        #
+        # fankui = input - prediction  # 噪声 - 预测
+        #
+        # # Corresponds to the Optimized Scheme
+        # loss = criterion(fankui, zaosheng.cuda())/(input.size()[0]*2)
         target = Variable(batch[1])  # 0 噪声   1 干净
         input = Variable(batch[0])  # 输入为噪声图片
         zaosheng = Variable(batch[0]) - Variable(batch[1])  # 噪声 - 干净
@@ -64,12 +79,12 @@ def train(epoch):
         optimizer.zero_grad()
         t0 = time.time()
 
-        prediction = model(input)
+        prediction = model(input)  # 输出噪声
 
-        fankui = input - prediction  # 噪声 - 预测
+        # fankui = input - prediction  # 噪声 - 预测
 
         # Corresponds to the Optimized Scheme
-        loss = criterion(fankui, zaosheng.cuda())/(input.size()[0]*2)
+        loss = criterion(prediction, zaosheng.cuda())/(input.size()[0]*2)
         # target = Variable(batch[1])  # 0 噪声   1 干净
         # input = Variable(batch[0])  # 输入为噪声图片
         # input = input.cuda()
@@ -98,7 +113,7 @@ def train(epoch):
     # SC = 'net_epoch_' + str(epoch) + '_' + str(iteration + 1) + '.pth'
     # torch.save(model.state_dict(), os.path.join(opt.save_folder, SC))
     # model.train()
-    torch.save(model.state_dict(), os.path.join(opt.save_folder, 'Real4.pth' ))  # 保存模型
+    torch.save(model.state_dict(), os.path.join(opt.save_folder, 'Real6.pth'))  # 保存模型
 
 def tensor_ndarray(data):
     data1 = data.data.cpu().numpy().astype(np.float32)
