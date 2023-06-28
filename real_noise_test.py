@@ -14,9 +14,9 @@ import public
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"] = "0,1"
 parser = argparse.ArgumentParser()
-# parser.add_argument('--pretrained', type=str, default='./Deam_models/', help="Checkpoints directory,  (default:./checkpoints)")  #
-parser.add_argument('--pretrained', type=str, default='./real_model/', help="Checkpoints directory,  (default:./checkpoints)")  #
-parser.add_argument('--model', type=str, default='Real6.pth', help='Location to save checkpoint models')  #
+parser.add_argument('--pretrained', type=str, default='./Deam_models/', help="Checkpoints directory,  (default:./checkpoints)")  #
+# parser.add_argument('--pretrained', type=str, default='./real_model/', help="Checkpoints directory,  (default:./checkpoints)")  #
+parser.add_argument('--model', type=str, default='Real.pth', help='Location to save checkpoint models')  #
 # parser.add_argument('--model', type=str, default='model_001.pth', help='Location to save checkpoint models')  #
 parser.add_argument('--result_dir', default='deam_results/real', type=str, help='directory of test dataset')  # 测试结果目录
 args = parser.parse_args()
@@ -41,7 +41,7 @@ def denoise(model, noisy_image):
     with torch.autograd.set_grad_enabled(False):
         torch.cuda.synchronize()
         phi_Z = model(noisy_image)
-        phi_Z = noisy_image.cuda() - phi_Z
+        # phi_Z = noisy_image.cuda() - phi_Z
     return phi_Z
 
 
@@ -82,6 +82,13 @@ def show(x, title=None, cbar=False, figsize=None):
     if cbar:
         plt.colorbar()
     plt.show()  # 输出图片
+
+
+
+
+
+
+
 def main():
     use_gpu = True
     print('Loading the Model')
@@ -91,6 +98,7 @@ def main():
         net.load_state_dict(checkpoint)
     net.eval()
     files_path = './data/cut/noise'  # 噪声图片路径
+    # files_path = './data'  # 噪声图片路径
     test_path = './data/cut/result'  # 无噪声图，计算SSIM和PSNR
     files_source = os.listdir(files_path)
     test_source = os.listdir(test_path)
@@ -107,6 +115,9 @@ def main():
         image_path = os.path.join(files_path, f)
         clean_path = os.path.join(test_path, g)
         noisy_image = plt.imread(image_path)  # 读彩色图片， 256 256 3 数组
+        # noisy_image = noisy_image[0:1280, 0:1280]/255.0
+
+        noisy_image = noisy_image.astype(np.float32)
         clean_image = plt.imread(clean_path)
         noisy_image = torch.from_numpy(noisy_image.transpose((2, 0, 1))[np.newaxis, ])  # 转为张量 1 3 256 256
         clean_image = torch.from_numpy(clean_image.transpose((2, 0, 1))[np.newaxis, ])
@@ -115,6 +126,8 @@ def main():
         p = tensor_ndarray(poseSmile_cell)
         n = tensor_ndarray(noisy_image)
         # show(np.hstack((c, p, n)))  # 显示图片结果
+        save_result(p, path='./data/Benchmark_test/png', xuhao=i2)
+        # show(np.hstack((p, n)))  # 显示图片结果
         psnr, ssim = batch_PSNR(clean_image, poseSmile_cell, 1.)  # 计算单个图片，输入为张量
         psnrs.append(psnr)
         ssims.append(ssim)

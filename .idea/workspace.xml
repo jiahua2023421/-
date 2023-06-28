@@ -4,20 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcf5cd65-6650-4f6d-bc5d-3a3b87d14f04" name="更改" comment="deamnet真实图像去噪改进">
+    <list default="true" id="fcf5cd65-6650-4f6d-bc5d-3a3b87d14f04" name="更改" comment="deamnet">
       <change afterPath="$PROJECT_DIR$/data/train/train1.h5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/deam_results/real/result_5.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/real_model/Real_4.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/-.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/-.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SIDD_denoise.py" beforeDir="false" afterPath="$PROJECT_DIR$/SIDD_denoise.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/SIDD_RENOIR_h5/train.h5" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/data/train/train.h5" beforeDir="false" afterPath="$PROJECT_DIR$/data/train/train.h5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gen_dataset_real.py" beforeDir="false" afterPath="$PROJECT_DIR$/gen_dataset_real.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/real_model/Real4.pth" beforeDir="false" afterPath="$PROJECT_DIR$/real_model/Real4.pth" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deam_results/real/result6.txt" beforeDir="false" afterPath="$PROJECT_DIR$/deam_results/real/result6.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deam_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/deam_train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deam_train_model/model_001.pth" beforeDir="false" afterPath="$PROJECT_DIR$/deam_train_model/model_001.pth" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/real_noise_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/real_noise_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/real_train.py" beforeDir="false" afterPath="$PROJECT_DIR$/real_train.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/statistics/training_logs.csv" beforeDir="false" afterPath="$PROJECT_DIR$/statistics/training_logs.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,8 +57,8 @@
       <recent name="C:\Users\张家华\PycharmProjects\-" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.real_noise_test (1)">
-    <configuration name="dncnn_train" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.deam_train">
+    <configuration name="deam_train" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="-" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -73,7 +70,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dncnn_train.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/deam_train.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -95,6 +92,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/gen_dataset_real.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ggggui" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="-" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ggggui.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -145,34 +163,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="scratch_3" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="-" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scratch_3.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.deam_train" />
         <item itemvalue="Python.real_noise_test (1)" />
+        <item itemvalue="Python.ggggui" />
         <item itemvalue="Python.real_train" />
         <item itemvalue="Python.gen_dataset_real" />
-        <item itemvalue="Python.scratch_3" />
-        <item itemvalue="Python.dncnn_train" />
       </list>
     </recent_temporary>
   </component>
@@ -402,7 +399,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686833320529</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="deamnet真实图像去噪改进">
+      <created>1686892250608</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1686892250608</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -440,16 +444,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/SIDD_denoise.py</url>
-          <line>75</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/real_noise_test.py</url>
-          <line>94</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/gen_dataset_real.py</url>
           <line>29</line>

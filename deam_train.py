@@ -24,12 +24,12 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "0,1"
 parser = argparse.ArgumentParser(description='PyTorch Super Res Example')
 parser.add_argument('--upscale_factor', type=int, default=1, help="super resolution upscale factor")
 parser.add_argument('--batchSize', type=int, default=2, help='training batch size')
-parser.add_argument('--nEpochs', type=int, default=1, help='number of epochs to train for')
+parser.add_argument('--nEpochs', type=int, default=10, help='number of epochs to train for')
 parser.add_argument('--start_iter', type=int, default=1, help='starting epoch')
 parser.add_argument('--lr', type=float, default=0.0001, help='learning rate. default=0.0001')
 parser.add_argument('--data_augmentation', type=bool, default=True, help='if adopt augmentation when training')
 # parser.add_argument('--hr_train_dataset', type=str, default='DIV2K_train_HR', help='the training dataset')
-parser.add_argument('--Ispretrained', type=bool, default=True, help='If load checkpoint model')
+parser.add_argument('--Ispretrained', type=bool, default=False, help='If load checkpoint model')
 parser.add_argument('--pretrained_sr', default='noise25.pth', help='sr pretrained base model')
 parser.add_argument('--pretrained', default='./Deam_models', help='Location to load checkpoint models')
 parser.add_argument("--noiseL", type=float, default=25, help='noise level')
@@ -68,17 +68,20 @@ def train(epoch):
         input = target + noise
 
         input = input.cuda()
-        target = target.cuda()
+        # target = target.cuda()
 
         model.zero_grad()
         optimizer.zero_grad()
         t0 = time.time()
 
-        prediction = model(input)
-
+        prediction = model(input)  # 预测噪声
+        ceshi = (input-prediction).cpu()
         # Corresponds to the Optimized Scheme
-        loss = criterion(prediction, target)/(input.size()[0]*2)
-
+        ceshi2 = (1/batch_PSNR(ceshi, target, 1.))
+        ceshi3 = (1-batch_SSIM(ceshi, target, 1.))
+        ceshi4 = ceshi2 * ceshi3
+        loss = criterion(prediction, noise.cuda())/(input.size()[0]*2) + ceshi4
+        # loss = criterion(prediction, noise.cuda()) / (input.size()[0] * 2)
         t1 = time.time()
         epoch_loss += loss.data
         loss.backward()
@@ -95,7 +98,23 @@ def train(epoch):
     print("===> Epoch {} Complete: Avg. Loss: {:.4f}".format(epoch, epoch_loss / len(training_data_loader)))
 
 
-
+def batch_SSIM(img, imclean, data_range):
+    Img = img.data.cpu().numpy().astype(np.float32)
+    Iclean = imclean.data.cpu().numpy().astype(np.float32)
+    PSNR = 0
+    SSIM1 = 0
+    SSIM2 = 0
+    SSIM3 = 0
+    SSIM = 0
+    for i in range(Img.shape[0]):
+        PSNR += compare_psnr(Iclean[i, :, :, :], Img[i, :, :, :], data_range=data_range)
+        ceshi = Iclean[i, :, :, :]
+        ceshi2 = Img[i, :, :, :]
+        SSIM1 += compare_ssim(ceshi[0], ceshi2[0], data_range=data_range)
+        # SSIM2 += compare_ssim(ceshi[1], ceshi2[1], data_range=data_range)
+        # SSIM3 += compare_ssim(ceshi[2], ceshi2[2], data_range=data_range)
+        # SSIM += ((SSIM1 + SSIM2 + SSIM3)/3)
+    return SSIM1 / Img.shape[0]
 def batch_PSNR(img, imclean, data_range):
     Img = img.data.cpu().numpy().astype(np.float32)
     Iclean = imclean.data.cpu().numpy().astype(np.float32)
@@ -111,7 +130,7 @@ def batch_PSNR(img, imclean, data_range):
         # img2 = np.resize(img2, (img1.shape[0], img1.shape[1], img1.shape[2]))
         ce = ceshi[0]
         ce2 = ceshi2[0]
-        show(np.hstack((Iclean2[:, :, 0], Img2[:, :, 0])))  # 去噪图片，噪声图片
+        # show(np.hstack((Iclean2[:, :, 0], Img2[:, :, 0])))  # 去噪图片，噪声图片
     return (PSNR / Img.shape[0])
 
 def show(x, title=None, cbar=False, figsize=None):
@@ -125,6 +144,7 @@ def show(x, title=None, cbar=False, figsize=None):
     plt.show()  # 输出图片
 def test(testing_data_loader):
     psnr_test = 0
+    ssim_test = 0
     model.eval()
     for batch in testing_data_loader:
         target = Variable(batch[0])
@@ -135,9 +155,12 @@ def test(testing_data_loader):
         target = target.cuda()
         with torch.no_grad():
             prediction = model(input)
+            prediction = input - prediction
             prediction = torch.clamp(prediction, 0., 1.)
         psnr_test += batch_PSNR(prediction, target, 1.)
+        ssim_test += batch_SSIM(prediction, target, 1.)
     print("===> Avg. PSNR: {:.4f} dB".format(psnr_test / len(testing_data_loader)))
+    print("===> Avg. PSNR: {:.4f} dB".format(ssim_test / len(testing_data_loader)))
     return psnr_test / len(testing_data_loader)
 
 

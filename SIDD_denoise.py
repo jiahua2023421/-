@@ -87,7 +87,7 @@ def test(args):
     print('Loading the Model')
     # args = parse_benchmark_processing_arguments()
     checkpoint = torch.load(os.path.join(args.pretrained, args.model))
-    net = Deam(args.Isreal)
+    net = Deam(True)
     if use_gpu:
         net = torch.nn.DataParallel(net).cuda()
         net.load_state_dict(checkpoint)
@@ -110,7 +110,7 @@ def test(args):
 
             # noisy_image = noisy_data_mat[image_index, block_index, :, :]
             noisy_image = np.float32(noisy_image / 255.)
-            # save_result(noisy_image, path='./data/Benchmark_test/png', xuhao=i)
+            save_result(noisy_image, path='./data/Benchmark_test/png', xuhao=i)
             noisy_image = torch.from_numpy(noisy_image.transpose((2, 0, 1))[np.newaxis, ])
             poseSmile_cell[image_index, block_index] = denoise(net, noisy_image, i)
             i += 1
