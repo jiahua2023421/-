@@ -51,7 +51,7 @@ parser.add_argument('--patch_size', type=int, default=128, help='Size of cropped
 parser.add_argument('--Isreal', default=False, help='If training/testing on RGB images')
 
 parser.add_argument('--train_dir', type=str, default='data', help='the dataset dir')
-parser.add_argument('--train_data', type=str, default='Train1', help='the dataset dir')
+parser.add_argument('--train_data', type=str, default='Train400', help='the dataset dir')
 opt = parser.parse_args()
 gpus_list = range(opt.gpus)
 hostname = str(socket.gethostname())
@@ -94,6 +94,7 @@ def train(epoch):
         #     model.train()
         # torch.save(model, os.path.join(opt.save_folder, 'model_%03d.pth' % (epoch + 1)))  # 保存模型
         print("===> Epoch[{}]({}/{}): Loss: {:.4f} || Timer: {:.4f} sec.".format(epoch, iteration, len(training_data_loader), loss.data, (t1 - t0)))
+    model.eval()
     torch.save(model, os.path.join(opt.save_folder, 'model_%03d.pth' % (epoch)))  # 保存模型
     print("===> Epoch {} Complete: Avg. Loss: {:.4f}".format(epoch, epoch_loss / len(training_data_loader)))
 
