@@ -1,4 +1,4 @@
-# DnCNN-PyTorch
+# DnCNN-PyTorc
 ## 工作量
 ### 图片处理
 图片加噪声
