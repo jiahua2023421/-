@@ -30,7 +30,12 @@
 
 ## 额外工作
 ### 讨论DeamNet 模型性能
-DnCNN网络架构
+下面分别是在BSD数据集下高斯噪声和SIDD数据集真实噪声测试结果：
+![image](https://github.com/jiahua2023421/dncnn/assets/70991729/406e25fb-1910-4aef-9a89-fffdba4e8b3b)
+![image](https://github.com/jiahua2023421/dncnn/assets/70991729/5a4c527d-0cd1-4118-9459-a6be02e95d10)
+
+
+
 ### 讨论改进模型的性能
 图片加噪声
 保存图片
