@@ -2,6 +2,7 @@
 ## 代码架构
 ### Red
 存放在Red文件夹下
+
 model.py-Red模型
 
 main.py-模型训练
@@ -22,7 +23,11 @@ public.py-公共公用函数
 data_process.py-数据处理
 
 ### DeamNet
+model.py-DeamNet模型
 
+deam_train.py-模型训练
+
+deam_test.py-模型测试
 
 ## 基本要求
 ### 1. 讨论不同噪声水平下去噪性能的表现
