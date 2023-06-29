@@ -3,15 +3,22 @@
 ### Red
 存放在Red文件夹下
 model.py-Red模型
+
 main.py-模型训练
+
 example.py-模型测试
+
 dataset.py-数据处理
 
 ### DnCNN
 model.py-DnCNN模型
+
 dncnn_train.py-模型训练
+
 dncnn_test.py-模型测试
+
 public.py-公共公用函数
+
 data_process.py-数据处理
 
 ### DeamNet
